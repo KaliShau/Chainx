@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import './assets/styles/globals.scss'
+import './styles/globals.scss'
 import { ReactNode } from 'react'
 
 const font = Montserrat({

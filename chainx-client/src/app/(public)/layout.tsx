@@ -1,7 +1,13 @@
+import { SideBar } from '@/widgets/sideBar'
 import { ReactNode } from 'react'
 
 const PublicLayout = ({ children }: { children: ReactNode }) => {
-  return <main>public{children}</main>
+  return (
+    <main>
+      <SideBar />
+      {children}
+    </main>
+  )
 }
 
 export default PublicLayout
