@@ -4,4 +4,9 @@
 
 body {
   font-family: var(--font);
+  @apply bg-black text-white font-medium h-screen;
+
+  > main {
+    @apply flex h-full;
+  }
 }

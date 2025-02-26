@@ -1,0 +1,44 @@
+.main {
+  @apply p-6 border-r-2 border-r-light-black;
+
+  h1 {
+    @apply flex text-3xl text-light-white font-extrabold items-center border-b-2 border-b-light-black pb-6;
+  }
+}
+
+.menuItem {
+  @apply flex gap-6 p-2 pr-32 rounded-lg relative transition-all duration-300;
+
+  &::before {
+    content: '';
+    @apply absolute h-full rounded -left-6 top-0 w-0 bg-primary transition-all duration-300;
+  }
+
+  &:hover {
+    @apply bg-light-black border-gray text-light-white;
+
+    &::before {
+      @apply w-1;
+    }
+  }
+}
+
+.active {
+  @apply bg-light-black border-gray text-light-white;
+
+  &::before {
+    @apply w-1;
+  }
+}
+
+.mainMenu {
+  @apply my-6;
+
+  > h5 {
+    @apply mb-2 text-xl text-light-white;
+  }
+}
+
+.menu {
+  @apply flex flex-col gap-2;
+}
