@@ -7,8 +7,3 @@ export class AuthDto {
   @IsString()
   password: string
 }
-
-export class RefreshTokenDto {
-  @IsString()
-  refreshToken: string
-}

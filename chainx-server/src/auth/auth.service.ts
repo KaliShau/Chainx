@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { UsersService } from 'src/users/users.service'
-import { AuthDto, RefreshTokenDto } from './auth.dto'
+import { AuthDto } from './auth.dto'
 import { hash, verify } from 'argon2'
 
 @Injectable()
@@ -42,7 +42,20 @@ export class AuthService {
     return { user: newUser, ...tokens }
   }
 
-  async getNewTokens(dto: RefreshTokenDto) {}
+  async getNewTokens(refreshToken: string) {
+    if (!refreshToken) throw new BadRequestException('Refresh token not found!')
+
+    try {
+      const payload = await this.jwt.verifyAsync(refreshToken)
+
+      const user = await this.usersService.getUserById(payload.id)
+      const tokens = await this.issueTokens(user.id)
+
+      return { user, ...tokens }
+    } catch (e) {
+      throw new BadRequestException('Invalid refresh token!')
+    }
+  }
 
   // Utils
 
