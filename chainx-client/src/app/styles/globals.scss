@@ -4,9 +4,31 @@
 
 body {
   font-family: var(--font);
-  @apply bg-black text-white font-medium h-screen;
+  @apply bg-black text-white font-medium h-screen bg-no-repeat bg-cover bg-center;
 
   > main {
     @apply flex h-full;
+  }
+
+  background-image: url('../../shared//images/houses.png');
+}
+
+.container-page {
+  @apply p-4 w-full h-full;
+}
+
+.not-found {
+  @apply h-full flex items-center px-20 bg-light-black rounded bg-opacity-95;
+
+  button {
+    @apply shadow-white shadow-sm my-10;
+  }
+
+  h3 {
+    @apply text-5xl font-semibold py-2;
+  }
+
+  p {
+    @apply font-semibold;
   }
 }

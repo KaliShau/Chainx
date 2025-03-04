@@ -7,27 +7,13 @@ import {
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Auth } from 'src/auth/decorators/auth.decorator'
-import { diskStorage } from 'multer'
-import { extname } from 'path'
+import { FileConfig } from 'src/config/file.config'
 
 @Controller('files')
 export class FilesController {
   @Auth()
   @Post('avatars/upload')
-  @UseInterceptors(
-    FileInterceptor('avatar', {
-      storage: diskStorage({
-        destination: './uploads/avatars',
-        filename: (req, file, callback) => {
-          const randomName = Array(32)
-            .fill(null)
-            .map(() => Math.round(Math.random() * 16).toString(16))
-            .join('')
-          return callback(null, `${randomName}${extname(file.originalname)}`)
-        },
-      }),
-    })
-  )
+  @UseInterceptors(FileInterceptor('avatar', FileConfig('avatars')))
   uploadImage(@UploadedFile() file: Express.Multer.File) {
     if (!file) throw new BadRequestException('File is required!')
     return {
