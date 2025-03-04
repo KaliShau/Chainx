@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './styles/globals.scss'
 import { ReactNode } from 'react'
+import { SideBar } from '@/widgets/sideBar'
 
 const font = Montserrat({
   variable: '--font',
@@ -19,7 +20,12 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en'>
-      <body className={font.variable}>{children}</body>
+      <body className={font.variable}>
+        <main>
+          <SideBar />
+          <section className='container-page'>{children}</section>
+        </main>
+      </body>
     </html>
   )
 }

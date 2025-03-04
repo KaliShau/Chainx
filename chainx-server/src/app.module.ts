@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path'
 import { FilesModule } from './files/files.module'
+import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FilesModule } from './files/files.module'
       serveRoot: '/uploads',
     }),
     FilesModule,
+    PostsModule,
   ],
   controllers: [],
   providers: [],

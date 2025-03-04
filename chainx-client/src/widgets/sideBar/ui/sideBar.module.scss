@@ -1,5 +1,5 @@
 .main {
-  @apply p-6 border-r-2 border-r-light-black;
+  @apply p-6 border-r-2 min-w-80 border-r-light-black;
 
   h1 {
     @apply flex text-3xl text-light-white font-extrabold items-center border-b-2 border-b-light-black pb-6;
@@ -34,11 +34,45 @@
 .mainMenu {
   @apply my-6;
 
-  > h5 {
-    @apply mb-2 text-xl text-light-white;
+  h5 {
+    @apply mb-2 text-lg text-light-white;
   }
 }
 
 .menu {
   @apply flex flex-col gap-2;
+}
+
+.menuTitle {
+  @apply flex justify-between;
+
+  > button {
+    @apply px-4 rounded transition-all;
+
+    &:hover {
+      @apply bg-light-black my-1;
+    }
+  }
+}
+
+.chevron {
+  transition: transform 0.2s ease-in-out;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.menuContent {
+  overflow: hidden;
+  max-height: 500px;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 1;
+  @apply flex flex-col gap-2;
+}
+
+.collapsed {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }

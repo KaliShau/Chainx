@@ -1,0 +1,7 @@
+.root {
+  @apply bg-light-black p-2 rounded transition-all font-medium;
+
+  &:hover {
+    @apply bg-gray;
+  }
+}
