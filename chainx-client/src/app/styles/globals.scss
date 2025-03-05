@@ -4,13 +4,15 @@
 
 body {
   font-family: var(--font);
-  @apply bg-black text-white font-medium h-screen bg-no-repeat bg-cover bg-center;
+  @apply bg-black text-white font-medium h-screen bg-center;
 
   > main {
     @apply flex h-full;
   }
 
   background-image: url('../../shared//images/houses.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container-page {

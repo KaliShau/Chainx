@@ -7,6 +7,8 @@ import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path'
 import { FilesModule } from './files/files.module'
 import { PostsModule } from './posts/posts.module';
+import { CommentsModule } from './comments/comments.module';
+import { LikesModule } from './likes/likes.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { PostsModule } from './posts/posts.module';
     }),
     FilesModule,
     PostsModule,
+    CommentsModule,
+    LikesModule,
   ],
   controllers: [],
   providers: [],

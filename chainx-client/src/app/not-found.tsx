@@ -8,7 +8,7 @@ import routesConfig from '@/shared/config/routes.config'
 
 const PageNotFound: NextPage = () => {
   const redirectDashboard = () => {
-    redirect(routesConfig.dashboardLink)
+    redirect(routesConfig.signInLink)
   }
   return (
     <div className='not-found'>

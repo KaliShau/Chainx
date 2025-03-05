@@ -13,7 +13,7 @@ model Users {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   username      String @unique
-  password_hash String
+  passwordHash String @map("password_hash")
 
   firstName String @default("No first name") @map("first_name")
   lastName  String @default("No last name") @map("last_name")
@@ -83,7 +83,7 @@ model Likes {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  users  Users  @relation(fields: [userId], references: [id])
+  user  Users  @relation(fields: [userId], references: [id])
   userId String @map("user_id")
   post   Posts  @relation(fields: [postId], references: [id])
   postId String @map("post_id")

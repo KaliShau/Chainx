@@ -1,7 +1,8 @@
+import { Posts } from '@/pages/posts-page'
 import { NextPage } from 'next'
 
 const PostsPage: NextPage = () => {
-  return <p>PostsPage</p>
+  return <Posts />
 }
 
 export default PostsPage
