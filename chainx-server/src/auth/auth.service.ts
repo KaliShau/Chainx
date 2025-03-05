@@ -16,7 +16,7 @@ export class AuthService {
 
     if (!user) throw new BadRequestException('Wrong login or password!')
 
-    const isPasswordValid = await verify(user.password_hash, dto.password)
+    const isPasswordValid = await verify(user.passwordHash, dto.password)
 
     if (!isPasswordValid)
       throw new BadRequestException('Wrong login or password!')

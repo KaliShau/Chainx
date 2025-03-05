@@ -5,10 +5,10 @@ import { PrismaService } from 'src/prisma/prisma.service'
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
-  async createUser(username: string, password_hash: string) {
+  async createUser(username: string, passwordHash: string) {
     return this.prisma.users.create({
       data: {
-        password_hash,
+        passwordHash,
         username,
       },
     })

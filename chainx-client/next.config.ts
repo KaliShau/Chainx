@@ -1,7 +1,21 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  env: {
+    API_URL: process.env.API_URL,
+  },
+  images: {
+    domains: [process.env.SERVER_DOMAIN!],
+  },
 
-export default nextConfig;
+  async rewrites() {
+    return [
+      {
+        source: `/uploads/:path*`,
+        destination: `${process.env.IMAGE_URL}/:path*`,
+      },
+    ]
+  },
+}
+
+export default nextConfig

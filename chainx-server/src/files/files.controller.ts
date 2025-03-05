@@ -14,10 +14,20 @@ export class FilesController {
   @Auth()
   @Post('avatars/upload')
   @UseInterceptors(FileInterceptor('avatar', FileConfig('avatars')))
-  uploadImage(@UploadedFile() file: Express.Multer.File) {
+  uploadAvatars(@UploadedFile() file: Express.Multer.File) {
     if (!file) throw new BadRequestException('File is required!')
     return {
-      url: `uploads/avatars/${file.filename}`,
+      url: `/uploads/avatars/${file.filename}`,
+    }
+  }
+
+  @Auth()
+  @Post('posts/upload')
+  @UseInterceptors(FileInterceptor('post', FileConfig('posts')))
+  uploadImagePosts(@UploadedFile() file: Express.Multer.File) {
+    if (!file) throw new BadRequestException('File is required!')
+    return {
+      url: `/uploads/posts/${file.filename}`,
     }
   }
 }
