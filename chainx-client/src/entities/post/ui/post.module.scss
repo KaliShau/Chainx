@@ -1,3 +1,54 @@
 .root {
-  @apply bg-light-black-2 bg-opacity-95;
+  @apply bg-light-black-2 bg-opacity-60 rounded p-2;
+
+  > a {
+    @apply h-auto w-auto rounded flex justify-center;
+  }
+
+  > a {
+    @apply py-2;
+  }
+}
+
+.userCard {
+  @apply flex gap-4 rounded-md p-1 transition-all;
+
+  img {
+    @apply rounded-full w-auto h-auto;
+  }
+
+  h4 {
+    @apply font-semibold text-xl flex flex-col;
+
+    > span {
+      @apply font-medium text-base;
+    }
+  }
+
+  &:hover {
+    @apply bg-gray bg-opacity-10;
+  }
+}
+
+.info {
+  @apply border-t-2 border-b-2 p-2 m-2 border-gray border-opacity-30 mt-6 flex justify-end;
+
+  p {
+    @apply flex gap-2 items-center px-4;
+  }
+}
+
+.likes {
+  @apply text-primary;
+  > svg {
+    @apply fill-primary;
+  }
+}
+
+.link {
+  @apply border-2 flex border-gray p-2 mt-4 m-2 opacity-20 transition-opacity;
+
+  &:hover {
+    @apply opacity-40;
+  }
 }
