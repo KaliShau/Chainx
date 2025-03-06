@@ -2,9 +2,11 @@
   @apply bg-light-black-2 bg-opacity-60 rounded p-2;
 
   > a {
-    @apply h-auto w-auto rounded flex justify-center;
+    @apply flex justify-center;
+    > img {
+      @apply h-auto w-auto rounded;
+    }
   }
-
   > a {
     @apply py-2;
   }
@@ -46,7 +48,7 @@
 }
 
 .link {
-  @apply border-2 flex border-gray p-2 mt-4 m-2 opacity-20 transition-opacity;
+  @apply border-2 text-start border-gray p-2 mt-4 m-2 opacity-20 transition-opacity;
 
   &:hover {
     @apply opacity-40;

@@ -10,12 +10,12 @@ const font = Montserrat({
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
   style: 'normal',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700', '800']
 })
 
 export const metadata: Metadata = {
   title: 'Chainx',
-  description: 'My app - Chainx',
+  description: 'My app - Chainx'
 }
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
@@ -23,6 +23,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <html lang='en'>
       <body className={font.variable}>
         <main>
+          <button className='sideBarOpen'>|||</button>
           <SideBar />
           <section className='container-page'>
             <MainProvider>{children}</MainProvider>

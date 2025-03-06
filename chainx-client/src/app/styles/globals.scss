@@ -4,7 +4,7 @@
 
 body {
   font-family: var(--font);
-  @apply bg-black text-white font-medium h-screen bg-center;
+  @apply bg-black text-white font-medium h-screen bg-center relative;
 
   > main {
     @apply flex h-full;
@@ -32,5 +32,24 @@ body {
 
   p {
     @apply font-semibold;
+  }
+}
+
+.sideBarOpen {
+  display: none;
+  @apply right-0 absolute m-6;
+
+  &:hover {
+    @apply text-primary;
+    aside {
+      display: block !important;
+      @apply absolute w-56 right-0;
+    }
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .sideBarOpen {
+    display: flex;
   }
 }

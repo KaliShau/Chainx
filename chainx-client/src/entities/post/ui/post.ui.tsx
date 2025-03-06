@@ -4,9 +4,8 @@ import { TypePost } from '@/shared/models/post.type'
 import Image from 'next/image'
 import { dateFormat } from '@/shared/utils/dateFormat.utils'
 import { Heart, MessageCircle } from 'lucide-react'
-import clsx from 'clsx'
 import Link from 'next/link'
-import routesConfig from '@/shared/config/routes.config'
+import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 
 type Type = {
   data: TypePost
@@ -27,8 +26,8 @@ export const Post: FC<Type> = ({ data }) => {
           <span>{dateFormat(data.createdAt)}</span>
         </h4>
       </div>
-      <Link href={`${routesConfig.postsLink}/${data.id}`}>{data.content}</Link>
-      <Link href={`${routesConfig.postsLink}/${data.id}`}>
+      <Link href={PUBLIC_ROUTES.post(data.id)}>{data.content}</Link>
+      <Link href={PUBLIC_ROUTES.post(data.id)}>
         <Image
           priority={true}
           alt='Post image'
@@ -53,11 +52,8 @@ export const Post: FC<Type> = ({ data }) => {
           </p>
         </div>
       </div>
-      <Link
-        href={`${routesConfig.postsLink}/${data.id}`}
-        className={styles.link}
-      >
-        Comments...
+      <Link href={PUBLIC_ROUTES.post(data.id)} className={styles.link}>
+        Write a comment...
       </Link>
     </div>
   )

@@ -9,13 +9,13 @@ import { AuthMenu } from './authMenu.ui'
 
 export const SideBar: FC = () => {
   return (
-    <div className={styles.main}>
+    <aside className={styles.main}>
       <h1>
         <Framer size='40' />
         Chainx
       </h1>
       <MainMenu menuData={MAIN_MENU} />
       <AuthMenu menuData={AUTH_MENU} />
-    </div>
+    </aside>
   )
 }
