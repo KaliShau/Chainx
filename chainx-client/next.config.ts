@@ -2,17 +2,19 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   env: {
-    API_URL: process.env.API_URL,
+    APP_URL: process.env.APP_URL,
+    SERVER_URL: process.env.SERVER_URL,
+    APP_DOMAIN: process.env.APP_DOMAIN,
   },
   images: {
-    domains: [process.env.SERVER_DOMAIN!],
+    remotePatterns: [{ hostname: process.env.SERVER_URL as string }],
   },
 
   async rewrites() {
     return [
       {
         source: `/uploads/:path*`,
-        destination: `${process.env.IMAGE_URL}/:path*`,
+        destination: `${process.env.SERVER_URL}/uploads/:path*`,
       },
     ]
   },

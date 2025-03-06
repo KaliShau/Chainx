@@ -4,11 +4,11 @@ import { NextPage } from 'next'
 import './styles/globals.scss'
 import { Button } from '@/shared/ui/button/button.ui'
 import { redirect } from 'next/navigation'
-import routesConfig from '@/shared/config/routes.config'
+import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 
 const PageNotFound: NextPage = () => {
   const redirectDashboard = () => {
-    redirect(routesConfig.signInLink)
+    redirect(PUBLIC_ROUTES.signIn())
   }
   return (
     <div className='not-found'>

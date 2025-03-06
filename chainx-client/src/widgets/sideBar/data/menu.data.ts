@@ -7,25 +7,25 @@ import {
   Sparkle,
 } from 'lucide-react'
 import { TypeMenuItem } from '../models/menuItem.type'
-import ROUTES from '@/shared/config/routes.config'
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
 
 export const MAIN_MENU: TypeMenuItem[] = [
   {
     icon: LayoutDashboard,
-    link: ROUTES.dashboardLink,
-    title: ROUTES.dashboardName,
+    link: PRIVATE_ROUTES.dashboard(),
+    title: 'Dashboard',
     isAuth: true,
   },
   {
     icon: Mail,
-    link: ROUTES.emailLink,
-    title: ROUTES.emailName,
+    link: PRIVATE_ROUTES.email(),
+    title: 'Email',
     isAuth: true,
   },
   {
     icon: Sparkle,
-    link: ROUTES.postsLink,
-    title: ROUTES.postsName,
+    link: PUBLIC_ROUTES.posts(),
+    title: 'Posts',
     isAuth: undefined,
   },
 ]
@@ -33,20 +33,20 @@ export const MAIN_MENU: TypeMenuItem[] = [
 export const AUTH_MENU: TypeMenuItem[] = [
   {
     icon: LogIn,
-    link: ROUTES.signInLink,
-    title: ROUTES.signInName,
+    link: PUBLIC_ROUTES.signIn(),
+    title: 'Sign-in',
     isAuth: false,
   },
   {
     icon: KeyRound,
-    link: ROUTES.signUpLink,
-    title: ROUTES.signUpName,
+    link: PUBLIC_ROUTES.signUp(),
+    title: 'Sign-up',
     isAuth: false,
   },
   {
     icon: LogOut,
-    link: ROUTES.signOutLink,
-    title: ROUTES.signOutName,
+    link: PRIVATE_ROUTES.signOut(),
+    title: 'Sign-out',
     isAuth: true,
   },
 ]

@@ -1,26 +1,19 @@
-class ROUTES {
-  // Main menu
+export const APP_URL = process.env.APP_URL
 
-  dashboardLink = '/dashboard'
-  dashboardName = 'Dashboard'
+export const PUBLIC_ROUTES = {
+  root: (url: string = '') => `${url ? url : ''}`,
 
-  emailLink = '/email'
-  emailName = 'Email'
+  posts: () => PUBLIC_ROUTES.root('/posts'),
+  post: (id: string) => PUBLIC_ROUTES.root(`/posts/${id}`),
 
-  postsLink = '/posts'
-  postsName = 'Posts'
-
-  // Auth menu
-  private auth = '/auth'
-
-  signInLink = `${this.auth}/sign-in`
-  signInName = 'Sign-in'
-
-  signUpLink = `${this.auth}/sign-up`
-  signUpName = 'Sign-up'
-
-  signOutLink = `${this.auth}/sign-out`
-  signOutName = 'Sign-out'
+  signIn: () => PUBLIC_ROUTES.root('/auth/sign-in'),
+  signUp: () => PUBLIC_ROUTES.root('/auth/sign-up'),
 }
 
-export default new ROUTES()
+export const PRIVATE_ROUTES = {
+  root: (url: string = '') => `${url ? url : ''}`,
+
+  dashboard: () => PUBLIC_ROUTES.root('/dashboard'),
+  email: () => PUBLIC_ROUTES.root('/email'),
+  signOut: () => PUBLIC_ROUTES.root('/auth/sign-out'),
+}

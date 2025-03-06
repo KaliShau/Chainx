@@ -4,24 +4,19 @@ import { FC, useRef } from 'react'
 import styles from './posts.module.scss'
 import { Post } from '@/entities/post'
 import { usePosts } from '../hooks/posts.hook'
-import { PostsService } from '../api/posts.service'
-import { TypePost } from '@/shared/models/post.type'
+import { Loader } from '@/shared/ui/loader/loader.ui'
 
 export const Posts: FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
   const { data, isError, isLoading, isFetchingNextPage } =
     usePosts(scrollContainerRef)
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
-  if (isError) {
-    return <div>Error...</div>
-  }
-
   return (
     <div className={styles.root} ref={scrollContainerRef}>
+      {isLoading && <Loader />}
+
+      {isError && <div>Error...</div>}
+
       {data?.pages.map((page, pageIndex) => (
         <div className={styles.posts} key={pageIndex}>
           {page.map(post => (
@@ -29,6 +24,7 @@ export const Posts: FC = () => {
           ))}
         </div>
       ))}
+      {isFetchingNextPage && <Loader />}
     </div>
   )
 }
