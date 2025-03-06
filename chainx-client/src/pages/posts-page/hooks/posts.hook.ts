@@ -2,17 +2,13 @@
 
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { PostsService } from '../api/posts.service'
-import { useEffect } from 'react'
+import { RefObject, useEffect } from 'react'
 import { TypePost } from '@/shared/models/post.type'
 
-type ApiResponse = {
-  pages: {
-    data: TypePost[]
-  }
-}
-
-export const usePosts = () => {
-  const limit = 10
+export const usePosts = (
+  scrollContainerRef: RefObject<HTMLDivElement | null>
+) => {
+  const limit = 2
 
   const {
     data,
@@ -22,21 +18,29 @@ export const usePosts = () => {
     isLoading,
     isError,
     error,
-  } = useInfiniteQuery<ApiResponse>({
+  } = useInfiniteQuery<TypePost[]>({
     queryKey: ['posts'],
     queryFn: ({ pageParam = 1 }) => PostsService.getAll(pageParam),
     getNextPageParam: (lastPage, allPages) => {
-      if (lastPage.pages.data.length < limit) return undefined
+      if (lastPage.length < limit) return undefined
       return allPages.length + 1
     },
     initialPageParam: 1,
   })
 
   useEffect(() => {
+    const scrollContainer = scrollContainerRef?.current
+    if (!scrollContainer) return
+
     const handleScroll = () => {
+      const scrollTop = scrollContainer.scrollTop
+      const scrollHeight = scrollContainer.scrollHeight
+      const clientHeight = scrollContainer.clientHeight
+
+      const heightScroll = 100
+
       if (
-        window.innerHeight + document.documentElement.scrollTop >=
-          document.documentElement.offsetHeight - 100 &&
+        scrollHeight - (scrollTop + clientHeight) <= heightScroll * 2 &&
         hasNextPage &&
         !isFetchingNextPage
       ) {
@@ -44,9 +48,9 @@ export const usePosts = () => {
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
+    scrollContainer.addEventListener('scroll', handleScroll)
+    return () => scrollContainer.removeEventListener('scroll', handleScroll)
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage, scrollContainerRef])
 
   return {
     data,
@@ -55,6 +59,5 @@ export const usePosts = () => {
     isFetchingNextPage,
     isLoading,
     isError,
-    error,
   }
 }

@@ -34,7 +34,7 @@ export class PostsController {
   @Get()
   async getAll(
     @Query('page') page: number = 1,
-    @Query('limit') limit: number = 10
+    @Query('limit') limit: number = 2
   ) {
     return this.postsService.getAll(page, limit)
   }
