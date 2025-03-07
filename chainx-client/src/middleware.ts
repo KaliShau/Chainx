@@ -1,4 +1,3 @@
-import { useAuth } from '@/shared/hooks/auth.hooks'
 import { NextRequest, NextResponse } from 'next/server'
 import { PRIVATE_ROUTES } from './shared/config/routes.config'
 

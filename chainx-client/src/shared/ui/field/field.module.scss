@@ -1,0 +1,19 @@
+.root {
+  > p {
+    @apply text-gray font-medium;
+  }
+
+  > input {
+    @apply outline-none bg-transparent border-2 rounded-md border-opacity-35 shadow-2xl shadow-black p-2 border-gray w-full mt-2;
+
+    &:focus {
+      @apply border-primary;
+    }
+  }
+}
+
+.error {
+  > input {
+    @apply border-red;
+  }
+}
