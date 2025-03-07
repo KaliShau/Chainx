@@ -8,6 +8,8 @@ export const PUBLIC_ROUTES = {
 
   signIn: () => PUBLIC_ROUTES.root('/auth/sign-in'),
   signUp: () => PUBLIC_ROUTES.root('/auth/sign-up'),
+
+  aboutUs: () => PUBLIC_ROUTES.root('/about-us')
 }
 
 export const PRIVATE_ROUTES = {
@@ -15,5 +17,5 @@ export const PRIVATE_ROUTES = {
 
   dashboard: () => PUBLIC_ROUTES.root('/dashboard'),
   email: () => PUBLIC_ROUTES.root('/email'),
-  signOut: () => PUBLIC_ROUTES.root('/auth/sign-out'),
+  signOut: () => PUBLIC_ROUTES.root('/auth/sign-out')
 }

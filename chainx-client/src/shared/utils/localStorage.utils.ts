@@ -11,7 +11,7 @@ export const localStorageMainMenu = {
       return status === 'true'
     }
     return true
-  },
+  }
 }
 
 export const localStorageAuthMenu = {
@@ -27,5 +27,21 @@ export const localStorageAuthMenu = {
       return status === 'true'
     }
     return true
+  }
+}
+
+export const localStorageAddMenu = {
+  add: (status: boolean) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('addMenuStatus', status.toString())
+    }
   },
+
+  get: (): boolean => {
+    if (typeof window !== 'undefined') {
+      const status = localStorage.getItem('addMenuStatus')
+      return status === 'true'
+    }
+    return true
+  }
 }

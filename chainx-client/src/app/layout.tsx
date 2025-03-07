@@ -4,6 +4,9 @@ import './styles/globals.scss'
 import { ReactNode } from 'react'
 import { SideBar } from '@/widgets/sideBar'
 import { MainProvider } from './providers/main-provider'
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/shared/constants/seo.constant'
+import icon from '@/shared/images/icon-app.png'
+import { Contact } from 'lucide-react'
 
 const font = Montserrat({
   variable: '--font',
@@ -14,13 +17,19 @@ const font = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Chainx',
-  description: 'My app - Chainx'
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_TITLE}`
+  },
+  description: SITE_DESCRIPTION
 }
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang='en'>
+      <head>
+        <meta name='apple-mobile-web-app-title' content='Chainx' />
+      </head>
       <body className={font.variable}>
         <main>
           <button className='sideBarOpen'>|||</button>

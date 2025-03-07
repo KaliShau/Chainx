@@ -80,5 +80,10 @@
 @media screen and (max-width: 1199px) {
   .main {
     display: none;
+    @apply absolute top-0 right-0 bg-black shadow-2xl z-10;
+
+    &:hover {
+      display: block;
+    }
   }
 }
