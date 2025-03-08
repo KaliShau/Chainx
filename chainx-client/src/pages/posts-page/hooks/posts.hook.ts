@@ -1,7 +1,7 @@
 'use client'
 
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { PostsService } from '../api/posts.service'
+import { PostsService } from '../service/posts.service'
 import { RefObject, useEffect } from 'react'
 import { TypePost } from '@/shared/models/post.type'
 
@@ -17,7 +17,7 @@ export const usePosts = (
     isFetchingNextPage,
     isLoading,
     isError,
-    error,
+    refetch
   } = useInfiniteQuery<TypePost[]>({
     queryKey: ['posts'],
     queryFn: ({ pageParam = 1 }) => PostsService.getAll(pageParam),
@@ -25,7 +25,7 @@ export const usePosts = (
       if (lastPage.length < limit) return undefined
       return allPages.length + 1
     },
-    initialPageParam: 1,
+    initialPageParam: 1
   })
 
   useEffect(() => {
@@ -59,5 +59,6 @@ export const usePosts = (
     isFetchingNextPage,
     isLoading,
     isError,
+    refetch
   }
 }

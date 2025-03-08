@@ -1,5 +1,5 @@
 .root {
-  @apply bg-light-black h-full bg-opacity-95 p-4 flex flex-col items-center justify-center;
+  @apply bg-light-black rounded h-full bg-opacity-95 p-4 flex flex-col items-center justify-center;
 
   > div {
     @apply flex flex-col w-[500px] gap-4;

@@ -31,13 +31,13 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <meta name='apple-mobile-web-app-title' content='Chainx' />
       </head>
       <body className={font.variable}>
-        <main>
-          <button className='sideBarOpen'>|||</button>
-          <SideBar />
-          <section className='container-page'>
-            <MainProvider>{children}</MainProvider>
-          </section>
-        </main>
+        <MainProvider>
+          <main>
+            <button className='sideBarOpen'>|||</button>
+            <SideBar />
+            <section className='container-page'>{children}</section>
+          </main>
+        </MainProvider>
       </body>
     </html>
   )

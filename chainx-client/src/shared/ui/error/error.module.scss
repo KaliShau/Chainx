@@ -1,0 +1,13 @@
+.container {
+  @apply flex flex-col justify-center items-center h-full;
+
+  > div {
+    > h2 {
+      @apply flex gap-4 text-2xl mb-1;
+    }
+
+    > p {
+      @apply text-gray mb-4;
+    }
+  }
+}

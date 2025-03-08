@@ -7,9 +7,18 @@ import { SubmitHandler, useForm, UseFormHandleSubmit } from 'react-hook-form'
 import { TypeAuthRequest } from '@/shared/models/auth.type'
 import { Button } from '@/shared/ui/button/button.ui'
 import Link from 'next/link'
-import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
+import { useSignIn } from '../hooks/sign-in.hook'
+import { useAuth } from '@/features/tokens'
+import { redirect } from 'next/navigation'
 
 export const SignIn: FC = () => {
+  const { mutate, isPending } = useSignIn()
+  const { isAuth } = useAuth()
+  if (isAuth) {
+    redirect(PRIVATE_ROUTES.dashboard())
+  }
+
   const {
     register,
     formState: { errors },
@@ -17,7 +26,7 @@ export const SignIn: FC = () => {
   } = useForm<TypeAuthRequest>({ mode: 'onChange' })
 
   const onSubmit: SubmitHandler<TypeAuthRequest> = data => {
-    console.log(data)
+    mutate(data)
   }
 
   return (
@@ -35,7 +44,7 @@ export const SignIn: FC = () => {
           topic='Password'
           {...register('password', { required: true })}
         />
-        <Button>Sign in</Button>
+        <Button disabled={isPending}>Sign in</Button>
         <p>
           New user?{' '}
           <Link className={styles.signUp} href={PUBLIC_ROUTES.signUp()}>

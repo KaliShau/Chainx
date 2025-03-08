@@ -1,7 +1,11 @@
-import { NextPage } from 'next'
+'use client'
 
-const HomePage: NextPage = () => {
-  return <p>Home</p>
+import withAuth from '@/app/providers/withAuth'
+import { Dashboard } from '@/pages/dashboard-page'
+import { Metadata, NextPage } from 'next'
+
+const DashboardPage: NextPage = () => {
+  return <Dashboard />
 }
 
-export default HomePage
+export default withAuth(DashboardPage)

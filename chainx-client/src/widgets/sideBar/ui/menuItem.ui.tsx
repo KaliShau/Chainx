@@ -6,12 +6,13 @@ import Link from 'next/link'
 import styles from './sideBar.module.scss'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
-import { useAuth } from '@/shared/hooks/auth.hooks'
+import { useAuth } from '@/features/tokens'
+import { Loader } from '@/shared/ui/loader/loader.ui'
 
 export const MenuItem: FC<TypeMenuItem> = props => {
   const pathname = usePathname()
 
-  const { isAuth } = useAuth()
+  const { isAuth, isLoading } = useAuth()
 
   if (props.isAuth !== undefined) {
     if (!isAuth === props.isAuth) {
@@ -23,10 +24,14 @@ export const MenuItem: FC<TypeMenuItem> = props => {
     }
   }
 
+  if (isLoading) {
+    return <div className={styles.skeleton} />
+  }
+
   return (
     <Link
       className={clsx(styles.menuItem, {
-        [styles.active]: pathname?.startsWith(props.link),
+        [styles.active]: pathname?.startsWith(props.link)
       })}
       href={props.link}
     >

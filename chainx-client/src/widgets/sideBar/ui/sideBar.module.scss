@@ -87,3 +87,7 @@
     }
   }
 }
+
+.skeleton {
+  @apply flex gap-6 p-2 pr-32 bg-light-black border-gray text-light-white rounded-lg relative transition-all duration-300 w-[270] h-10;
+}
