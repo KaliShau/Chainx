@@ -1,5 +1,5 @@
 .root {
-  @apply bg-light-black h-full bg-opacity-95 p-4 overflow-auto flex flex-col gap-4;
+  @apply bg-light-black rounded h-full bg-opacity-95 p-4 overflow-auto flex flex-col gap-4;
 }
 
 .root::-webkit-scrollbar {

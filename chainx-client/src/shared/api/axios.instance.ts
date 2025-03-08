@@ -2,12 +2,12 @@ import axios, { CreateAxiosDefaults } from 'axios'
 import { SERVER_URL } from '../config/api.config'
 import { errorCatch, getContentType } from './api.helper'
 import { cookiesTokens } from '../utils/token.utils'
-import { AuthService } from '../services/auth.service'
+import { TokenService } from '../../features/tokens/services/tokens.service'
 
 const options: CreateAxiosDefaults = {
   baseURL: `${SERVER_URL}/api`,
   headers: getContentType(),
-  withCredentials: true,
+  withCredentials: true
 }
 
 export const axiosClassic = axios.create(options)
@@ -36,7 +36,7 @@ axiosWithAuth.interceptors.request.use(
     ) {
       originalRequest._isRetry = true
       try {
-        await AuthService.getNewTokens()
+        await TokenService.getNewTokens()
         return axiosWithAuth.request(originalRequest)
       } catch (error) {
         if (errorCatch(error) === 'jwt expired')

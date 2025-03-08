@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ hostname: process.env.SERVER_URL as string }]
   },
 
+  reactStrictMode: false,
+
   async rewrites() {
     return [
       {

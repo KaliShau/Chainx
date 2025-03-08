@@ -5,5 +5,9 @@ export const API_URL = {
 
   posts: (query: number | unknown = 1) => API_URL.root(`/posts?page=${query}`),
 
-  getNewTokens: () => API_URL.root('/auth/get-new-tokens')
+  getNewTokens: () => API_URL.root('/auth/get-new-tokens'),
+
+  signIn: () => API_URL.root('/auth/sign-in'),
+  signUp: () => API_URL.root('/auth/sign-up'),
+  signOut: () => API_URL.root('/auth/sign-out')
 }
