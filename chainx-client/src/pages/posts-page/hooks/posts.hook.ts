@@ -2,7 +2,7 @@
 
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { PostsService } from '../service/posts.service'
-import { RefObject, useEffect } from 'react'
+import { RefObject, useEffect, useState } from 'react'
 import { TypePost } from '@/shared/models/post.type'
 
 export const usePosts = (

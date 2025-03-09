@@ -15,8 +15,16 @@
 .userCard {
   @apply flex gap-4 rounded-md p-1 transition-all;
 
+  > a {
+    @apply flex gap-4 rounded-md p-1 transition-all w-full p-2;
+
+    &:hover {
+      @apply bg-gray bg-opacity-10;
+    }
+  }
+
   img {
-    @apply rounded-full w-auto h-auto;
+    @apply rounded-full w-[50px] h-[50px] object-cover;
   }
 
   h4 {
@@ -26,22 +34,22 @@
       @apply font-medium text-base;
     }
   }
-
-  &:hover {
-    @apply bg-gray bg-opacity-10;
-  }
 }
 
 .info {
   @apply border-t-2 border-b-2 p-2 m-2 border-gray border-opacity-30 mt-6 flex justify-end;
 
-  p {
+  button {
+    @apply flex gap-2 items-center px-4;
+  }
+
+  a {
     @apply flex gap-2 items-center px-4;
   }
 }
 
 .likes {
-  @apply text-primary;
+  @apply text-primary transition-all;
   > svg {
     @apply fill-primary;
   }

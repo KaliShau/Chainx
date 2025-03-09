@@ -9,5 +9,7 @@ export const API_URL = {
 
   signIn: () => API_URL.root('/auth/sign-in'),
   signUp: () => API_URL.root('/auth/sign-up'),
-  signOut: () => API_URL.root('/auth/sign-out')
+  signOut: () => API_URL.root('/auth/sign-out'),
+
+  toggleLike: (id: string = '') => API_URL.root(`/likes/${id}`)
 }

@@ -1,3 +1,4 @@
+import { SignUp } from '@/pages/sign-up-page'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {
@@ -5,7 +6,7 @@ export const metadata: Metadata = {
 }
 
 const SignUpPage: NextPage = () => {
-  return <div>Sign up</div>
+  return <SignUp />
 }
 
 export default SignUpPage

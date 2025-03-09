@@ -6,13 +6,15 @@ import { TypePost } from '@/shared/models/post.type'
 import { FC } from 'react'
 
 interface ErrorProps {
-  refetch: () => void
+  refetch?: () => void
 }
 
 export const Error: FC<ErrorProps> = ({ refetch }) => {
   const handleReload = () => {
     console.log('refetch')
-    refetch()
+    if (refetch) {
+      refetch()
+    }
   }
   return (
     <div className={styles.container}>
@@ -24,7 +26,7 @@ export const Error: FC<ErrorProps> = ({ refetch }) => {
           We couldn’t load the posts. Please check your internet connection and
           try again.
         </p>
-        <Button onClick={handleReload}>Refresh page</Button>
+        {refetch && <Button onClick={handleReload}>Refresh page</Button>}
       </div>
     </div>
   )

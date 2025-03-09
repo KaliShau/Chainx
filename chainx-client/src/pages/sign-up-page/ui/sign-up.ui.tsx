@@ -1,24 +1,25 @@
 'use client'
 
-import { FC } from 'react'
-import styles from './sign-in.module.scss'
-import { Field } from '@/shared/ui/field/field.ui'
-import { SubmitHandler, useForm, UseFormHandleSubmit } from 'react-hook-form'
+import { useAuth } from '@/features/tokens'
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { TypeAuthRequest } from '@/shared/models/auth.type'
+import { redirect } from 'next/navigation'
+import { FC } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import styles from './sign-up.module.scss'
+import { Field } from '@/shared/ui/field/field.ui'
 import { Button } from '@/shared/ui/button/button.ui'
 import Link from 'next/link'
-import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
-import { useSignIn } from '../hooks/sign-in.hook'
-import { useAuth } from '@/features/tokens'
-import { redirect } from 'next/navigation'
+import { useSignUp } from '../hooks/sign-up.hook'
 import { Spinner } from '@/shared/ui/spinner/spinner.ui'
 
-export const SignIn: FC = () => {
-  const { mutate, isPending } = useSignIn()
+export const SignUp: FC = () => {
   const { isAuth } = useAuth()
   if (isAuth) {
     redirect(PRIVATE_ROUTES.dashboard())
   }
+
+  const { isPending, mutate } = useSignUp()
 
   const {
     register,
@@ -33,8 +34,8 @@ export const SignIn: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
       <div>
-        <h2>Sign In</h2>
-        <p>Welcome back! Please sign in to your account!</p>
+        <h2>Sign Up</h2>
+        <p>Don't have an account yet? So create it!</p>
         <Field
           error={errors.username}
           topic='Username'
@@ -46,12 +47,12 @@ export const SignIn: FC = () => {
           {...register('password', { required: true })}
         />
         <Button disabled={isPending}>
-          {isPending ? <Spinner /> : 'Sign in'}
+          {isPending ? <Spinner /> : 'Sign up'}
         </Button>
         <p>
-          New user?{' '}
-          <Link className={styles.signUp} href={PUBLIC_ROUTES.signUp()}>
-            Sign up
+          Do you have an account?{' '}
+          <Link className={styles.signUp} href={PUBLIC_ROUTES.signIn()}>
+            Sign in
           </Link>
         </p>
       </div>
