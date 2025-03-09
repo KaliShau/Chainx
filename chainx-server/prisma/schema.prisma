@@ -18,7 +18,7 @@ model Users {
   firstName String @default("No first name") @map("first_name")
   lastName  String @default("No last name") @map("last_name")
 
-  imageUrl String @default("uploads/avatars/default.jpg") @map("image_url")
+  imageUrl String @default("/uploads/avatars/default.jpg") @map("image_url")
 
   posts            Posts[]
   sentMessages     Messages[] @relation("SentMessages")

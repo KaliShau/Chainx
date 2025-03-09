@@ -13,7 +13,7 @@ const options: CreateAxiosDefaults = {
 export const axiosClassic = axios.create(options)
 export const axiosWithAuth = axios.create(options)
 
-axiosWithAuth.interceptors.response.use(config => {
+axiosWithAuth.interceptors.request.use(config => {
   const accessToken = cookiesTokens.getAccessToken()
 
   if (config?.headers && accessToken)
@@ -22,7 +22,7 @@ axiosWithAuth.interceptors.response.use(config => {
   return config
 })
 
-axiosWithAuth.interceptors.request.use(
+axiosWithAuth.interceptors.response.use(
   config => config,
   async error => {
     const originalRequest = error.config
