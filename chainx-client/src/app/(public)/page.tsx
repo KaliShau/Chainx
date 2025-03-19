@@ -1,8 +1,8 @@
-import { NextPage } from 'next'
+import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { redirect } from 'next/navigation'
 
 const HomePage = () => {
-  redirect('/dashboard')
+  redirect(PUBLIC_ROUTES.signIn())
 }
 
 export default HomePage

@@ -11,5 +11,11 @@ export const API_URL = {
   signUp: () => API_URL.root('/auth/sign-up'),
   signOut: () => API_URL.root('/auth/sign-out'),
 
-  toggleLike: (id: string = '') => API_URL.root(`/likes/${id}`)
+  userById: (id = '') => API_URL.root(`/users/${id}`),
+
+  toggleLike: (id: string = '') => API_URL.root(`/likes/${id}`),
+
+  uploadAvatar: () => API_URL.root('/files/avatars/upload'),
+
+  updateUser: () => API_URL.root('/users')
 }

@@ -1,5 +1,5 @@
 .root {
-  @apply bg-light-black  flex w-full rounded p-4 bg-opacity-95;
+  @apply bg-light-black h-full flex w-full rounded p-4 bg-opacity-95;
 
   > img {
     @apply w-[600px] object-cover h-[600px] rounded;
@@ -14,6 +14,14 @@
 
     h4 {
       @apply bg-light-black-2 p-2 bg-opacity-30 rounded font-semibold;
+    }
+  }
+
+  .link {
+    @apply flex w-full;
+
+    > button {
+      @apply w-full;
     }
   }
 }

@@ -8,4 +8,4 @@ const SignOutPage: NextPage = () => {
   return <SignOut />
 }
 
-export default SignOutPage
+export default withAuth(SignOutPage)

@@ -4,13 +4,13 @@ import { FC } from 'react'
 import styles from './post.module.scss'
 import { TypePost } from '@/shared/models/post.type'
 import Image from 'next/image'
-import { dateFormat } from '@/shared/utils/dateFormat.utils'
 import { Heart, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { useAuth } from '@/features/tokens'
-import { useLikes } from '@/features/likes'
 import clsx from 'clsx'
+import { useToggleLike } from '@/features/toggle-like/hooks/toggle-like.hook'
+import { UserCardPost } from './user-card-post.ui'
 
 type Type = {
   data: TypePost
@@ -18,7 +18,7 @@ type Type = {
 
 export const Post: FC<Type> = ({ data }) => {
   const { isAuth } = useAuth()
-  const { mutate } = useLikes()
+  const { mutate } = useToggleLike()
 
   const isLike = () => {
     if (!isAuth) return
@@ -36,20 +36,7 @@ export const Post: FC<Type> = ({ data }) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.userCard}>
-        <Link href={PUBLIC_ROUTES.user(data.userId)}>
-          <Image
-            alt='User avatar'
-            src={data.user.imageUrl}
-            width={50}
-            height={50}
-          />
-          <h4>
-            {data.user.firstName} {data.user.lastName}
-            <span>{dateFormat(data.createdAt)}</span>
-          </h4>
-        </Link>
-      </div>
+      <UserCardPost data={data} />
       <Link href={PUBLIC_ROUTES.post(data.id)}>{data.content}</Link>
       <Link href={PUBLIC_ROUTES.post(data.id)}>
         <Image

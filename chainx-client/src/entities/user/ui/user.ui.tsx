@@ -3,12 +3,17 @@ import { FC } from 'react'
 import styles from './user.module.scss'
 import Image from 'next/image'
 import { dateFormat } from '@/shared/utils/dateFormat.utils'
+import { Button } from '@/shared/ui/button/button.ui'
+import Link from 'next/link'
+import { PRIVATE_ROUTES } from '@/shared/config/routes.config'
+import { UserStatistics } from './statistics.ui'
 
 type Type = {
   data: TypeUser
+  profile?: boolean
 }
 
-export const User: FC<Type> = ({ data }) => {
+export const User: FC<Type> = ({ data, profile: update = false }) => {
   return (
     <div className={styles.root}>
       <Image height={1000} width={1000} src={data.imageUrl} alt='User avatar' />
@@ -29,6 +34,11 @@ export const User: FC<Type> = ({ data }) => {
         <h4>
           ID: <span>{data.id}</span>
         </h4>
+        {update && (
+          <Link className={styles.link} href={PRIVATE_ROUTES.updateUser()}>
+            <Button>Редактировать</Button>
+          </Link>
+        )}
       </div>
     </div>
   )
