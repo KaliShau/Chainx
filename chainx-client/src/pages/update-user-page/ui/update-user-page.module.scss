@@ -1,0 +1,15 @@
+.root {
+  @apply rounded h-full bg-light-black  bg-opacity-95  overflow-auto flex w-full p-4;
+
+  > input {
+    @apply w-0 h-0;
+  }
+
+  > .fields {
+    @apply flex flex-col w-full p-4 gap-2;
+  }
+}
+
+.box {
+  @apply w-[800px] bg-light-black-2 h-[800px] object-cover cursor-pointer rounded-lg;
+}

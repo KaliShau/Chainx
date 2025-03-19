@@ -12,7 +12,7 @@ export class AuthService {
   ) {}
 
   async signIn(dto: AuthDto) {
-    const user = await this.usersService.getUserByUsername(dto.username)
+    const user = await this.usersService.getByUsername(dto.username)
 
     if (!user) throw new BadRequestException('Wrong login or password!')
 
@@ -27,12 +27,12 @@ export class AuthService {
   }
 
   async signUp(dto: AuthDto) {
-    const user = await this.usersService.getUserByUsername(dto.username)
+    const user = await this.usersService.getByUsername(dto.username)
 
     if (user)
       throw new BadRequestException('Username or password is not valid!')
 
-    const newUser = await this.usersService.createUser(
+    const newUser = await this.usersService.create(
       dto.username,
       await hash(dto.password)
     )
@@ -48,7 +48,7 @@ export class AuthService {
     try {
       const payload = await this.jwt.verifyAsync(refreshToken)
 
-      const user = await this.usersService.getUserById(payload.id)
+      const user = await this.usersService.getById(payload.id)
       const tokens = await this.issueTokens(user.id)
 
       return { user, ...tokens }

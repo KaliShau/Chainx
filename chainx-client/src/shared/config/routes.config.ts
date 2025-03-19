@@ -18,6 +18,9 @@ export const PRIVATE_ROUTES = {
   root: (url: string = '') => `${url ? url : ''}`,
 
   dashboard: () => PRIVATE_ROUTES.root('/dashboard'),
+  updateUser: () => PRIVATE_ROUTES.root('/dashboard/update'),
+
   email: () => PRIVATE_ROUTES.root('/email'),
+
   signOut: () => PRIVATE_ROUTES.root('/auth/sign-out')
 }
