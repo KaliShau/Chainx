@@ -8,3 +8,9 @@ export type TypeUser = {
   lastName: string
   imageUrl: string
 }
+
+export type TypeUpdateUser = {
+  username: string
+  firstName: string
+  lastName: string
+}

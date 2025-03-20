@@ -4,19 +4,20 @@ import { FC } from 'react'
 import styles from './post.module.scss'
 import { TypePost } from '@/shared/models/post.type'
 import Image from 'next/image'
-import { Heart, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { useAuth } from '@/features/tokens'
-import clsx from 'clsx'
-import { useToggleLike } from '@/features/toggle-like/hooks/toggle-like.hook'
-import { UserCardPost } from './user-card-post.ui'
+import { useToggleLike } from '@/features/likes/hooks/toggle-like.hook'
+import { PostInfo } from './info.ui'
+import { UpdateInfoPost } from './update-info.ui'
+import { UserCard } from '@/entities/user-card'
 
 type Type = {
   data: TypePost
+  update?: boolean
 }
 
-export const Post: FC<Type> = ({ data }) => {
+export const PostItem: FC<Type> = ({ data, update = false }) => {
   const { isAuth } = useAuth()
   const { mutate } = useToggleLike()
 
@@ -36,7 +37,7 @@ export const Post: FC<Type> = ({ data }) => {
 
   return (
     <div className={styles.root}>
-      <UserCardPost data={data} />
+      <UserCard data={data.user} createDate={data.createdAt} />
       <Link href={PUBLIC_ROUTES.post(data.id)}>{data.content}</Link>
       <Link href={PUBLIC_ROUTES.post(data.id)}>
         <Image
@@ -47,28 +48,16 @@ export const Post: FC<Type> = ({ data }) => {
           height={500}
         />
       </Link>
-      <div className={styles.info}>
-        <div>
-          <button
-            className={clsx({
-              [styles.likes]: isLike()
-            })}
-            onClick={toggleLike}
-          >
-            <Heart fill='#fff' />
-            {data.likes?.length} Likes
-          </button>
-        </div>
-        <div>
-          <Link href={PUBLIC_ROUTES.post(data.id)}>
-            <MessageCircle />
-            {data.comments?.length} Comments
-          </Link>
-        </div>
-      </div>
-      <Link href={PUBLIC_ROUTES.post(data.id)} className={styles.link}>
-        Write a comment...
-      </Link>
+      {!update ? (
+        <PostInfo data={data} isLike={isLike} />
+      ) : (
+        <UpdateInfoPost
+          isAuth={isAuth}
+          toggleLike={toggleLike}
+          isLike={isLike}
+          data={data}
+        />
+      )}
     </div>
   )
 }

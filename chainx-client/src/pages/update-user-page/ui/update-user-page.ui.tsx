@@ -4,11 +4,11 @@ import { useAuth } from '@/features/tokens'
 import { Loader } from '@/shared/ui/loader/loader.ui'
 import { ImageInput } from './image-input.ui'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { TypeUpdateUser } from '../models/update-user.type'
 import { Field } from '@/shared/ui/field/field.ui'
 import { Button } from '@/shared/ui/button/button.ui'
 import { useUploadAvatar } from '@/features/images/hooks/upload-avatar.hook'
-import { useUpdateUser } from '../hooks/update-user.hook'
+import { useUpdateUser } from '../../../features/users/hooks/update-user.hook'
+import { TypeUpdateUser } from '@/shared/models/user.type'
 
 export const UpdateUser = () => {
   const { isAuth, isLoading } = useAuth()

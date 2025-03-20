@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { UserByIdService } from '../services/user-by-id.service'
+import { UsersService } from '../services/users.service'
 
 export const useUserById = (id: string) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['post'],
-    queryFn: () => UserByIdService.getById(id),
-    staleTime: 0
+    queryKey: [`user-${id}`],
+    queryFn: () => UsersService.getById(id)
   })
 
   return { data, isError, isLoading }

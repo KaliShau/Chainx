@@ -1,0 +1,23 @@
+.userCard {
+  @apply flex gap-4 rounded-md p-1 transition-all;
+
+  > a {
+    @apply flex gap-4 rounded-md p-1 transition-all w-full p-2;
+
+    &:hover {
+      @apply bg-gray bg-opacity-10;
+    }
+  }
+
+  img {
+    @apply rounded-full w-[50px] h-[50px] object-cover;
+  }
+
+  h4 {
+    @apply font-semibold text-xl flex flex-col;
+
+    > span {
+      @apply font-medium text-base;
+    }
+  }
+}

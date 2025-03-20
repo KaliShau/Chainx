@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Param,
   Post,
   UsePipes,
@@ -24,5 +25,11 @@ export class CommentsController {
     @Body() dto: CommentsDto
   ) {
     return this.commentsService.create(dto, userId, postId)
+  }
+
+  @Auth()
+  @Delete(':id')
+  async delete(@Param('id') commentId: string, @User('id') userId: string) {
+    return this.commentsService.delete(userId, commentId)
   }
 }

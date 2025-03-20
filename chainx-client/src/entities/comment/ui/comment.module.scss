@@ -1,0 +1,15 @@
+.root {
+  > div {
+    @apply flex justify-between items-center;
+
+    > p {
+      @apply p-1 px-14;
+    }
+
+    > button {
+      @apply h-10;
+    }
+  }
+
+  @apply border-b border-gray border-opacity-20;
+}

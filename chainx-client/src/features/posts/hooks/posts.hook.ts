@@ -1,9 +1,9 @@
 'use client'
 
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { PostsService } from '../service/posts.service'
 import { RefObject, useEffect, useState } from 'react'
 import { TypePost } from '@/shared/models/post.type'
+import { PostsService } from '../services/posts.service'
 
 export const usePosts = (
   scrollContainerRef: RefObject<HTMLDivElement | null>
