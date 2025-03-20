@@ -4,6 +4,7 @@ export const API_URL = {
   root: (url = '') => `${url ? url : ''}`,
 
   posts: (query: number | unknown = 1) => API_URL.root(`/posts?page=${query}`),
+  post: (id = '') => API_URL.root(`/posts/${id}`),
 
   getNewTokens: () => API_URL.root('/auth/get-new-tokens'),
 
@@ -12,10 +13,12 @@ export const API_URL = {
   signOut: () => API_URL.root('/auth/sign-out'),
 
   userById: (id = '') => API_URL.root(`/users/${id}`),
+  updateUser: () => API_URL.root('/users'),
 
-  toggleLike: (id: string = '') => API_URL.root(`/likes/${id}`),
+  toggleLike: (id = '') => API_URL.root(`/likes/${id}`),
 
   uploadAvatar: () => API_URL.root('/files/avatars/upload'),
 
-  updateUser: () => API_URL.root('/users')
+  createComment: (id = '') => API_URL.root(`/comments/${id}`),
+  deleteComment: (id = '') => API_URL.root(`/comments/${id}`)
 }

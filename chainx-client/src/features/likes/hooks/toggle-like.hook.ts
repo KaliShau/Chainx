@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { ToggleLikeService } from '../services/toggle-like.service'
+import { ToggleLikeService } from '../services/likes.service'
 import toast from 'react-hot-toast'
 
 export const useToggleLike = () => {
@@ -11,7 +11,7 @@ export const useToggleLike = () => {
       toast.success('Update Like!!!')
 
       queryClient.invalidateQueries({
-        queryKey: ['posts']
+        queryKey: ['post']
       })
     }
   })

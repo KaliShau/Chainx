@@ -2,36 +2,9 @@
   @apply bg-light-black-2 bg-opacity-60 rounded p-2;
 
   > a {
-    @apply flex justify-center;
+    @apply flex py-2 w-full;
     > img {
-      @apply h-auto w-auto rounded;
-    }
-  }
-  > a {
-    @apply py-2;
-  }
-}
-
-.userCard {
-  @apply flex gap-4 rounded-md p-1 transition-all;
-
-  > a {
-    @apply flex gap-4 rounded-md p-1 transition-all w-full p-2;
-
-    &:hover {
-      @apply bg-gray bg-opacity-10;
-    }
-  }
-
-  img {
-    @apply rounded-full w-[50px] h-[50px] object-cover;
-  }
-
-  h4 {
-    @apply font-semibold text-xl flex flex-col;
-
-    > span {
-      @apply font-medium text-base;
+      @apply h-auto w-auto rounded mx-auto;
     }
   }
 }
@@ -51,7 +24,7 @@
 .likes {
   @apply text-primary transition-all;
   > svg {
-    @apply fill-primary;
+    @apply fill-primary !important;
   }
 }
 
@@ -60,5 +33,37 @@
 
   &:hover {
     @apply opacity-40;
+  }
+}
+
+.update {
+  @apply flex w-full flex-col;
+
+  > button {
+    @apply w-full bg-primary bg-opacity-20 p-2 rounded-lg flex transition-all;
+
+    > svg {
+      @apply fill-white mr-2;
+    }
+
+    &:hover {
+      @apply bg-primary bg-opacity-30;
+    }
+  }
+
+  > .comments {
+    @apply flex flex-col gap-2 px-4;
+
+    > p {
+      @apply text-gray;
+    }
+
+    > h4 {
+      @apply font-semibold text-xl mt-4 flex gap-2  items-center;
+
+      > p {
+        @apply border p-0.5 px-2 rounded-xl;
+      }
+    }
   }
 }

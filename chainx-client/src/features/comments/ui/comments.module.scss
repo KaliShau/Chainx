@@ -1,0 +1,7 @@
+.createCommentForm {
+  @apply flex flex-col gap-4;
+
+  > button {
+    @apply w-full;
+  }
+}

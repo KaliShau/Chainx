@@ -20,7 +20,16 @@ export class PostsService {
   async getById(id: string) {
     return this.prisma.posts.findUnique({
       where: { id },
-      include: { comments: true, likes: true, user: true },
+      include: {
+        comments: {
+          include: {
+            user: true,
+          },
+          orderBy: { createdAt: 'desc' },
+        },
+        likes: true,
+        user: true,
+      },
     })
   }
 

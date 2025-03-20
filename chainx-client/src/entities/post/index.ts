@@ -1,1 +1,1 @@
-export { Post } from './ui/post.ui'
+export { PostItem } from './ui/post.ui'
