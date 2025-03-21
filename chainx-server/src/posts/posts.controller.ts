@@ -26,6 +26,16 @@ export class PostsController {
     return { message: 'Successfully' }
   }
 
+  @Auth()
+  @Get('user')
+  async getByUser(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 2,
+    @User('id') userId: string
+  ) {
+    return this.postsService.getByUser(page, limit, userId)
+  }
+
   @Get(':id')
   async getById(@Param('id') id: string) {
     return this.postsService.getById(id)

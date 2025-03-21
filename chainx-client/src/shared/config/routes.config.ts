@@ -22,5 +22,8 @@ export const PRIVATE_ROUTES = {
 
   email: () => PRIVATE_ROUTES.root('/email'),
 
-  signOut: () => PRIVATE_ROUTES.root('/auth/sign-out')
+  signOut: () => PRIVATE_ROUTES.root('/auth/sign-out'),
+
+  postsDashboardMy: () => PRIVATE_ROUTES.root('/dashboard/posts'),
+  postsDashboardCreate: () => PRIVATE_ROUTES.root('/dashboard/posts/create')
 }

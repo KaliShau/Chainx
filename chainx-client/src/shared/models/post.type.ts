@@ -14,3 +14,9 @@ export type TypePost = {
   likes?: TypeLike[]
   user: TypeUser
 }
+
+export type TypeCreatePost = {
+  title: string
+  content: string
+  imageUrl: string
+}

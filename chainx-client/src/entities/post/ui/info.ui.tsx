@@ -1,14 +1,14 @@
-import clsx from 'clsx'
 import styles from './post.module.scss'
 import { Heart, MessageCircle } from 'lucide-react'
 import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { TypePost } from '@/shared/models/post.type'
 import { FC } from 'react'
 import Link from 'next/link'
+import { cn } from '@/shared/utils/classnames.utils'
 
 type Type = {
   data: TypePost
-  isLike: () => void
+  isLike: () => boolean | undefined
 }
 
 export const PostInfo: FC<Type> = ({ data, isLike }) => {
@@ -18,7 +18,7 @@ export const PostInfo: FC<Type> = ({ data, isLike }) => {
         <div>
           <Link
             href={PUBLIC_ROUTES.post(data.id)}
-            className={clsx({
+            className={cn({
               [styles.likes]: isLike()
             })}
           >

@@ -1,13 +1,12 @@
 'use client'
 
 import { FC } from 'react'
-import { TypeMenuItem } from '../models/menuItem.type'
+import { TypeMenuItem } from '../models/menu-item.type'
 import Link from 'next/link'
-import styles from './sideBar.module.scss'
-import clsx from 'clsx'
+import styles from './side-bar.module.scss'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '@/features/tokens'
-import { Loader } from '@/shared/ui/loader/loader.ui'
+import { cn } from '@/shared/utils/classnames.utils'
 
 export const MenuItem: FC<TypeMenuItem> = props => {
   const pathname = usePathname()
@@ -30,7 +29,7 @@ export const MenuItem: FC<TypeMenuItem> = props => {
 
   return (
     <Link
-      className={clsx(styles.menuItem, {
+      className={cn(styles.menuItem, {
         [styles.active]: pathname?.startsWith(props.link)
       })}
       href={props.link}

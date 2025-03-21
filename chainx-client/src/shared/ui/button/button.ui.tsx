@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { TypeButton } from './button.type'
 import styles from './button.module.scss'
-import clsx from 'clsx'
+import { cn } from '@/shared/utils/classnames.utils'
 
 export const Button: FC<TypeButton> = ({
   children,
@@ -9,7 +9,7 @@ export const Button: FC<TypeButton> = ({
   ...rest
 }) => {
   return (
-    <button className={clsx(styles.root, style)} {...rest}>
+    <button className={cn(styles.root, style)} {...rest}>
       {children}
     </button>
   )

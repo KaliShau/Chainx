@@ -7,7 +7,7 @@
 }
 
 .menuItem {
-  @apply flex gap-6 p-2 pr-32 rounded-lg relative transition-all duration-300;
+  @apply flex gap-6 p-2 pr-10 rounded-lg relative transition-all duration-300 items-center;
 
   &::before {
     content: '';
@@ -21,6 +21,9 @@
       @apply w-1;
     }
   }
+
+  a {
+  }
 }
 
 .active {
@@ -31,7 +34,7 @@
   }
 }
 
-.mainMenu {
+.Menu {
   @apply my-6;
 
   h5 {

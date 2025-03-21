@@ -2,7 +2,7 @@ import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import styles from './user-card.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
-import { dateFormat } from '@/shared/utils/dateFormat.utils'
+import { dateFormat } from '@/shared/utils/date-format.utils'
 import { TypeUser } from '@/shared/models/user.type'
 
 export const UserCard = ({

@@ -37,10 +37,24 @@ export class PostsService {
     const skip = (page - 1) * limit
 
     return this.prisma.posts.findMany({
-      skip,
-      take: limit,
+      skip: skip,
+      take: Number(limit),
       orderBy: { createdAt: 'desc' },
       include: { comments: true, likes: true, user: true },
+    })
+  }
+
+  async getByUser(page: number, limit: number, userId: string) {
+    const skip = (page - 1) * limit
+
+    return this.prisma.posts.findMany({
+      skip: skip,
+      take: Number(limit),
+      orderBy: { createdAt: 'desc' },
+      include: { comments: true, likes: true, user: true },
+      where: {
+        userId,
+      },
     })
   }
 }

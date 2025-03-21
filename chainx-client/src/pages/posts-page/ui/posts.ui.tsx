@@ -6,11 +6,13 @@ import { Loader } from '@/shared/ui/loader/loader.ui'
 import { Error } from '@/shared/ui/error/error.ui'
 import { usePosts } from '@/features/posts/hooks/posts.hook'
 import { PostItem } from '@/entities/post'
+import { Button } from '@/shared/ui/button/button.ui'
 
 export const Posts: FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
-  const { data, isError, isLoading, isFetchingNextPage, refetch } =
-    usePosts(scrollContainerRef)
+  const { data, isError, isLoading, isFetchingNextPage, refetch } = usePosts({
+    scrollContainerRef
+  })
 
   return (
     <div className={styles.root} ref={scrollContainerRef}>

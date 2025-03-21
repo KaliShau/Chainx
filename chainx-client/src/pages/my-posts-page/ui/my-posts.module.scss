@@ -1,0 +1,21 @@
+.root {
+  @apply bg-light-black rounded h-full bg-opacity-95 p-4 overflow-auto flex flex-col gap-4;
+
+  > h2 {
+    @apply font-semibold text-2xl;
+  }
+}
+
+.root::-webkit-scrollbar {
+  @apply w-3;
+}
+.root::-webkit-scrollbar-track {
+  @apply bg-light-black-2;
+}
+.root::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-2xl;
+}
+
+.posts {
+  @apply flex flex-col gap-4;
+}

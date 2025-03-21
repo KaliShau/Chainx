@@ -45,3 +45,19 @@ export const localStorageAddMenu = {
     return true
   }
 }
+
+export const localStoragePanelsMenu = {
+  add: (status: boolean) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('panelsMenuStatus', status.toString())
+    }
+  },
+
+  get: (): boolean => {
+    if (typeof window !== 'undefined') {
+      const status = localStorage.getItem('panelsMenuStatus')
+      return status === 'true'
+    }
+    return true
+  }
+}

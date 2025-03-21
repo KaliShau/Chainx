@@ -1,6 +1,6 @@
 'use client'
 
-import withAuth from '@/app/providers/withAuth'
+import withAuth from '@/app/providers/with-auth'
 import { UpdateUser } from '@/pages/update-user-page'
 import { Error } from '@/shared/ui/error/error.ui'
 import { NextPage } from 'next'

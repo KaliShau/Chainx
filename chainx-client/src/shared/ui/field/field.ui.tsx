@@ -1,6 +1,6 @@
 import { TypeField } from './field.type'
 import styles from './field.module.scss'
-import clsx from 'clsx'
+import { cn } from '@/shared/utils/classnames.utils'
 
 export const Field = ({
   topic,
@@ -9,7 +9,7 @@ export const Field = ({
   ...rest
 }: TypeField) => {
   return (
-    <div className={clsx(styles.root, style, { [styles.error]: error })}>
+    <div className={cn(styles.root, style, { [styles.error]: Boolean(error) })}>
       <p>{topic}</p>
       <input {...rest} />
     </div>
