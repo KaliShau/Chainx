@@ -1,0 +1,33 @@
+.root {
+  @apply flex justify-between transition-all;
+
+  &:hover {
+    @apply bg-light-black-2 bg-opacity-30;
+  }
+
+  img {
+    @apply w-[150px] h-auto rounded-lg;
+  }
+
+  > a {
+    @apply flex w-full gap-8 items-center;
+
+    > div > {
+      @apply flex gap-2;
+      p {
+        @apply flex gap-4 text-gray;
+      }
+    }
+  }
+
+  h4 {
+    @apply font-semibold text-lg;
+  }
+
+  .info {
+    @apply gap-2 flex flex-col bg-gray p-2 bg-opacity-10 rounded-lg;
+    p {
+      @apply text-white;
+    }
+  }
+}

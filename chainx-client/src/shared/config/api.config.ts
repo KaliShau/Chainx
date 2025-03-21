@@ -3,8 +3,11 @@ export const SERVER_URL = process.env.SERVER_URL as string
 export const API_URL = {
   root: (url = '') => `${url ? url : ''}`,
 
-  posts: (query: number | unknown = 1) => API_URL.root(`/posts?page=${query}`),
+  posts: (query: number | unknown = 1, limit: number) =>
+    API_URL.root(`/posts?page=${query}&limit=${limit}`),
   post: (id = '') => API_URL.root(`/posts/${id}`),
+  postsByUser: (query: number | unknown = 1, limit: number) =>
+    API_URL.root(`/posts/user?page=${query}&limit=${limit}`),
 
   getNewTokens: () => API_URL.root('/auth/get-new-tokens'),
 

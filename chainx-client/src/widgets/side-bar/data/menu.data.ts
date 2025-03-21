@@ -5,9 +5,10 @@ import {
   LogIn,
   LogOut,
   Mail,
+  Newspaper,
   Sparkle
 } from 'lucide-react'
-import { TypeMenuItem } from '../models/menuItem.type'
+import { TypeMenuItem } from '../models/menu-item.type'
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
 
 export const MAIN_MENU: TypeMenuItem[] = [
@@ -58,5 +59,14 @@ export const ADDITIONAL_MENU: TypeMenuItem[] = [
     link: PUBLIC_ROUTES.aboutUs(),
     title: 'About-us',
     isAuth: undefined
+  }
+]
+
+export const PANELS_MENU: TypeMenuItem[] = [
+  {
+    icon: Newspaper,
+    link: PRIVATE_ROUTES.postsDashboardMy(),
+    title: 'Posts-panel',
+    isAuth: true
   }
 ]

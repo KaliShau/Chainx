@@ -5,11 +5,24 @@ import { RefObject, useEffect, useState } from 'react'
 import { TypePost } from '@/shared/models/post.type'
 import { PostsService } from '../services/posts.service'
 
-export const usePosts = (
-  scrollContainerRef: RefObject<HTMLDivElement | null>
-) => {
-  const limit = 2
+export enum EnumTypeUsePosts {
+  ALL = 'All',
+  USER = 'User'
+}
 
+type Type = {
+  scrollContainerRef: RefObject<HTMLDivElement | null>
+  limit?: number
+  infiniteScroll?: boolean
+  type?: EnumTypeUsePosts
+}
+
+export const usePosts = ({
+  scrollContainerRef,
+  infiniteScroll = true,
+  limit = 2,
+  type = EnumTypeUsePosts.ALL
+}: Type) => {
   const {
     data,
     fetchNextPage,
@@ -19,8 +32,11 @@ export const usePosts = (
     isError,
     refetch
   } = useInfiniteQuery<TypePost[]>({
-    queryKey: ['posts'],
-    queryFn: ({ pageParam = 1 }) => PostsService.getAll(pageParam),
+    queryKey: [type == EnumTypeUsePosts.ALL ? 'posts' : 'my-posts'],
+    queryFn: ({ pageParam = 1 }) =>
+      type == EnumTypeUsePosts.ALL
+        ? PostsService.getAll(pageParam, limit)
+        : PostsService.getByUser(pageParam, limit),
     getNextPageParam: (lastPage, allPages) => {
       if (lastPage.length < limit) return undefined
       return allPages.length + 1
@@ -28,29 +44,31 @@ export const usePosts = (
     initialPageParam: 1
   })
 
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef?.current
-    if (!scrollContainer) return
+  if (infiniteScroll) {
+    useEffect(() => {
+      const scrollContainer = scrollContainerRef?.current
+      if (!scrollContainer) return
 
-    const handleScroll = () => {
-      const scrollTop = scrollContainer.scrollTop
-      const scrollHeight = scrollContainer.scrollHeight
-      const clientHeight = scrollContainer.clientHeight
+      const handleScroll = () => {
+        const scrollTop = scrollContainer.scrollTop
+        const scrollHeight = scrollContainer.scrollHeight
+        const clientHeight = scrollContainer.clientHeight
 
-      const heightScroll = 100
+        const heightScroll = 100
 
-      if (
-        scrollHeight - (scrollTop + clientHeight) <= heightScroll * 2 &&
-        hasNextPage &&
-        !isFetchingNextPage
-      ) {
-        fetchNextPage()
+        if (
+          scrollHeight - (scrollTop + clientHeight) <= heightScroll * 2 &&
+          hasNextPage &&
+          !isFetchingNextPage
+        ) {
+          fetchNextPage()
+        }
       }
-    }
 
-    scrollContainer.addEventListener('scroll', handleScroll)
-    return () => scrollContainer.removeEventListener('scroll', handleScroll)
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage, scrollContainerRef])
+      scrollContainer.addEventListener('scroll', handleScroll)
+      return () => scrollContainer.removeEventListener('scroll', handleScroll)
+    }, [hasNextPage, isFetchingNextPage, fetchNextPage, scrollContainerRef])
+  }
 
   return {
     data,

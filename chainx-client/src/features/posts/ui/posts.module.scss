@@ -1,0 +1,17 @@
+.root {
+  .input {
+    @apply h-[400px] w-auto mx-auto;
+  }
+
+  > div {
+    @apply mb-4;
+  }
+
+  .content > textarea {
+    @apply h-[300px] text-wrap text-start align-text-top;
+  }
+
+  > button {
+    @apply w-full;
+  }
+}

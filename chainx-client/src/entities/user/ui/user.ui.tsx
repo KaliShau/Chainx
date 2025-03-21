@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/shared/ui/button/button.ui'
 import Link from 'next/link'
 import { PRIVATE_ROUTES } from '@/shared/config/routes.config'
-import { dateFormat } from '@/shared/utils/dateFormat.utils'
+import { dateFormat } from '@/shared/utils/date-format.utils'
 type Type = {
   data: TypeUser
   profile?: boolean

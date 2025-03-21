@@ -1,15 +1,20 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
-import styles from './update-user-page.module.scss'
-import { useAuth } from '@/features/tokens'
-import { Loader } from '@/shared/ui/loader/loader.ui'
+import styles from './field-image.module.scss'
+import { cn } from '@/shared/utils/classnames.utils'
 
 type Type = {
-  imageURL: string | null
+  imageURL?: string | null
   setImageURL: (data: string) => void
   setImage: (file: File) => void
+  className?: string
 }
 
-export const ImageInput = ({ imageURL, setImageURL, setImage }: Type) => {
+export const FieldImage = ({
+  imageURL = null,
+  setImageURL,
+  setImage,
+  className
+}: Type) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +37,7 @@ export const ImageInput = ({ imageURL, setImageURL, setImage }: Type) => {
         type='file'
         accept='image/*'
         onChange={handleImageChange}
+        className={cn(styles.input)}
       />
       {imageURL ? (
         <div>
@@ -39,12 +45,15 @@ export const ImageInput = ({ imageURL, setImageURL, setImage }: Type) => {
             src={imageURL}
             alt='Selected'
             style={{ maxWidth: '100%', marginTop: '10px' }}
-            className={styles.box}
+            className={cn(styles.box, className)}
             onClick={handleDivClick}
           />
         </div>
       ) : (
-        <div onClick={handleDivClick} className={styles.box}></div>
+        <div
+          onClick={handleDivClick}
+          className={cn(styles.box, className)}
+        ></div>
       )}
     </>
   )

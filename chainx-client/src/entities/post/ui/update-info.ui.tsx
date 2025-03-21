@@ -2,11 +2,11 @@ import { FC } from 'react'
 import styles from './post.module.scss'
 import { Heart } from 'lucide-react'
 import { TypePost } from '@/shared/models/post.type'
-import clsx from 'clsx'
 import { CommentItem } from '@/entities/comment'
 import { CreateCommentForm } from '@/features/comments'
 import { TypeAuthResponse } from '@/shared/models/auth.type'
 import { TypeUser } from '@/shared/models/user.type'
+import { cn } from '@/shared/utils/classnames.utils'
 
 type Type = {
   data: TypePost
@@ -23,10 +23,7 @@ export const UpdateInfoPost: FC<Type> = ({
 }) => {
   return (
     <div className={styles.update}>
-      <button
-        className={clsx({ [styles.likes]: isLike() })}
-        onClick={toggleLike}
-      >
+      <button className={cn({ [styles.likes]: isLike() })} onClick={toggleLike}>
         <Heart /> {data.likes?.length} Likes
       </button>
       <div className={styles.comments}>

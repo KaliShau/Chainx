@@ -1,0 +1,15 @@
+.root {
+  @apply flex gap-6 px-2;
+}
+
+.item {
+  @apply bg-light-black-2 p-2 px-6 rounded-lg flex gap-2 transition-all;
+
+  &:hover {
+    @apply bg-primary;
+  }
+}
+
+.active {
+  @apply bg-primary;
+}

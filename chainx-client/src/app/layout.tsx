@@ -2,11 +2,9 @@ import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import './styles/globals.scss'
 import { ReactNode } from 'react'
-import { SideBar } from '@/widgets/sideBar'
+import { SideBar } from '@/widgets/side-bar'
 import { MainProvider } from './providers/main-provider'
 import { SITE_DESCRIPTION, SITE_TITLE } from '@/shared/constants/seo.constant'
-import icon from '@/shared/images/icon-app.png'
-import { Contact } from 'lucide-react'
 
 const font = Montserrat({
   variable: '--font',
