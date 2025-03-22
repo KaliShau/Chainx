@@ -26,5 +26,13 @@ export const API_URL = {
   uploadPostImage: () => API_URL.root('/files/posts/upload'),
 
   createComment: (id = '') => API_URL.root(`/comments/${id}`),
-  deleteComment: (id = '') => API_URL.root(`/comments/${id}`)
+  deleteComment: (id = '') => API_URL.root(`/comments/${id}`),
+
+  messagesMy: () => API_URL.root('/messages'),
+  messagesSender: () => API_URL.root('/messages/sender'),
+  messagesReceiver: () => API_URL.root('/messages/receiver'),
+  messagesById: (id = '') => API_URL.root(`/messages/${id}`),
+  messagesCreate: (id = '') => API_URL.root(`/messages/${id}`),
+  messagesDeleteReceiver: (id = '') => API_URL.root(`/messages/receiver/${id}`),
+  messagesDeleteSender: (id = '') => API_URL.root(`/messages/sender/${id}`)
 }

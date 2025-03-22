@@ -1,18 +1,14 @@
-'use client'
-
 import { Post } from '@/pages/post-page'
 import { Error } from '@/shared/ui/error/error.ui'
-import { NextPage } from 'next'
+import { Metadata, NextPage } from 'next'
 import { useParams } from 'next/navigation'
 
+export const metadata: Metadata = {
+  title: 'Post'
+}
+
 const PostPage: NextPage = () => {
-  const param = useParams()
-
-  if (!param) {
-    return <Error />
-  }
-
-  return <Post id={param.id} />
+  return <Post />
 }
 
 export default PostPage

@@ -60,6 +60,9 @@ model Messages {
   receiver   Users  @relation("ReceivedMessages", fields: [receiverId], references: [id])
   receiverId String @map("receiver_id")
 
+  deletedBySenderAt   DateTime? @map("deleted_by_sender_at")   
+  deletedByReceiverAt DateTime? @map("deleted_by_receiver_at")
+
   @@map("messages")
 }
 

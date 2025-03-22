@@ -5,11 +5,13 @@ import { Error } from '@/shared/ui/error/error.ui'
 import { Loader } from '@/shared/ui/loader/loader.ui'
 import { PostItem } from '@/entities/post'
 import styles from './post.module.scss'
+import { useParams } from 'next/navigation'
 
-export const Post = ({ id }: { id: string | string[] }) => {
-  const { data, isError, isLoading } = usePostById(id as string)
+export const Post = () => {
+  const param = useParams()
+  const { data, isError, isLoading } = usePostById(param?.id as string)
 
-  if (isError) {
+  if (isError || !param) {
     return <Error />
   }
 

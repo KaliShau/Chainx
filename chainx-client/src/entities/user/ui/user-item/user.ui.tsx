@@ -34,7 +34,7 @@ export const UserItem: FC<Type> = ({ data, profile = false }) => {
         </h4>
         {profile && (
           <Link className={styles.link} href={PRIVATE_ROUTES.updateUser()}>
-            <Button>Редактировать</Button>
+            <Button>Edit</Button>
           </Link>
         )}
       </div>

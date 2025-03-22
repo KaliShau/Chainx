@@ -4,7 +4,7 @@ import { TokenService } from '../services/tokens.service'
 import { cookiesTokens } from '@/shared/utils/token.utils'
 import { useEffect } from 'react'
 
-export const useAuth = () => {
+export const useUser = () => {
   const { data, isSuccess, isLoading } = useQuery<TypeAuthResponse>({
     queryKey: ['user'],
     queryFn: () => TokenService.getNewTokens(),
@@ -14,7 +14,7 @@ export const useAuth = () => {
   if (isSuccess) {
     cookiesTokens.saveAccessToken(data.accessToken)
   }
-  const isAuth = data?.user
+  const user = data?.user
 
-  return { isAuth, isLoading }
+  return { user, isLoading }
 }

@@ -9,14 +9,14 @@ import { Button } from '@/shared/ui/button/button.ui'
 import Link from 'next/link'
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { useSignIn } from '../hooks/sign-in.hook'
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 import { redirect } from 'next/navigation'
 import { Spinner } from '@/shared/ui/spinner/spinner.ui'
 
 export const SignIn: FC = () => {
   const { mutate, isPending } = useSignIn()
-  const { isAuth } = useAuth()
-  if (isAuth) {
+  const { user } = useUser()
+  if (user) {
     redirect(PRIVATE_ROUTES.dashboard())
   }
 

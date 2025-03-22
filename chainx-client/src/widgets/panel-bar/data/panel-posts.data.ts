@@ -11,6 +11,6 @@ export const PANEL_POSTS_DATA: TypePanelBar[] = [
   {
     icon: BadgePlus,
     link: PRIVATE_ROUTES.postsPanelCreate(),
-    title: 'Create'
+    title: 'Create post'
   }
 ]

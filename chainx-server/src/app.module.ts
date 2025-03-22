@@ -6,9 +6,10 @@ import { ConfigModule } from '@nestjs/config'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { join } from 'path'
 import { FilesModule } from './files/files.module'
-import { PostsModule } from './posts/posts.module';
-import { CommentsModule } from './comments/comments.module';
-import { LikesModule } from './likes/likes.module';
+import { PostsModule } from './posts/posts.module'
+import { CommentsModule } from './comments/comments.module'
+import { LikesModule } from './likes/likes.module'
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { LikesModule } from './likes/likes.module';
     PostsModule,
     CommentsModule,
     LikesModule,
+    MessagesModule,
   ],
   controllers: [],
   providers: [],

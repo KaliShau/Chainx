@@ -1,9 +1,12 @@
+'use client'
+
 import styles from './update-user-page.module.scss'
 import { Loader } from '@/shared/ui/loader/loader.ui'
 import { Field } from '@/shared/ui/field/field.ui'
 import { Button } from '@/shared/ui/button/button.ui'
 import { FieldImage } from '@/shared/ui/field-image/field-image.ui'
 import { useUpdateUserPage } from '../hooks/update-user-page.hook'
+import { useAuth } from '@/features/tokens/hooks/auth.hook'
 
 export const UpdateUser = () => {
   const {
@@ -16,6 +19,12 @@ export const UpdateUser = () => {
     errors,
     register
   } = useUpdateUserPage()
+
+  const auth = useAuth()
+
+  if (auth) {
+    return auth
+  }
 
   if (isLoading) return <Loader />
 
@@ -42,7 +51,7 @@ export const UpdateUser = () => {
           topic='Last name'
           {...register('lastName', { required: true })}
         />
-        <Button>Сохранить</Button>
+        <Button>Save</Button>
       </div>
     </form>
   )

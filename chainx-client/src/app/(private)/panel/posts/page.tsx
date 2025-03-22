@@ -1,11 +1,14 @@
-'use client'
-
-import withAuth from '@/app/providers/with-auth'
 import { MyPosts } from '@/pages/my-posts-page'
-import { NextPage } from 'next'
+import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
+import { Metadata, NextPage } from 'next'
+
+export const metadata: Metadata = {
+  title: 'My posts',
+  ...NO_INDEX_PAGE
+}
 
 const DashboardPostsPage: NextPage = () => {
   return <MyPosts />
 }
 
-export default withAuth(DashboardPostsPage)
+export default DashboardPostsPage
