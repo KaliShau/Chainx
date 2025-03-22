@@ -12,5 +12,17 @@ export const ImagesService = {
         }
       })
     ).data
+  },
+
+  uploadPostImage: async (file: File): Promise<{ url: string }> => {
+    const formData = new FormData()
+    formData.append('post', file)
+    return (
+      await axiosWithAuth.post(API_URL.uploadPostImage(), formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+    ).data
   }
 }

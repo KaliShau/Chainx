@@ -65,7 +65,7 @@ export const ADDITIONAL_MENU: TypeMenuItem[] = [
 export const PANELS_MENU: TypeMenuItem[] = [
   {
     icon: Newspaper,
-    link: PRIVATE_ROUTES.postsDashboardMy(),
+    link: PRIVATE_ROUTES.postsPanelMy(),
     title: 'Posts-panel',
     isAuth: true
   }

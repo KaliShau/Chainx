@@ -57,4 +57,20 @@ export class PostsService {
       },
     })
   }
+
+  async delete(postId: string, userId: string) {
+    return this.prisma.$transaction([
+      this.prisma.likes.deleteMany({
+        where: {
+          postId,
+        },
+      }),
+      this.prisma.comments.deleteMany({
+        where: { postId },
+      }),
+      this.prisma.posts.delete({
+        where: { id: postId, userId },
+      }),
+    ])
+  }
 }

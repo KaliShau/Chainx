@@ -1,1 +1,1 @@
-export { useUploadAvatar } from './hooks/upload-avatar.hook'
+export { useUploadImage } from './hooks/upload-image.hook'

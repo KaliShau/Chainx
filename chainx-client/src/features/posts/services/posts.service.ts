@@ -1,6 +1,6 @@
 import { axiosClassic, axiosWithAuth } from '@/shared/api/axios.instance'
 import { API_URL } from '@/shared/config/api.config'
-import { TypePost } from '@/shared/models/post.type'
+import { TypeCreatePost, TypePost } from '@/shared/models/post.type'
 
 export const PostsService = {
   getById: async (id: string): Promise<TypePost> =>
@@ -18,5 +18,13 @@ export const PostsService = {
     limit: number
   ): Promise<TypePost[]> => {
     return (await axiosWithAuth.get(API_URL.postsByUser(pageParam, limit))).data
+  },
+
+  create: async (data: TypeCreatePost) => {
+    return (await axiosWithAuth.post(API_URL.createPost(), data)).data
+  },
+
+  delete: async (id: string) => {
+    return (await axiosWithAuth.delete(API_URL.deletePost(id))).data
   }
 }

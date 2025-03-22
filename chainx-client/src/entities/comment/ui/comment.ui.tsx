@@ -1,4 +1,3 @@
-import { UserCard } from '@/entities/user-card'
 import { TypeComment } from '@/shared/models/comment.type'
 import { FC } from 'react'
 
@@ -7,6 +6,7 @@ import { CreateCommentForm, useDeleteComment } from '@/features/comments'
 import { Button } from '@/shared/ui/button/button.ui'
 import { Eraser } from 'lucide-react'
 import { useAuth } from '@/features/tokens'
+import { UserCard } from '@/entities/user'
 
 type Type = {
   data: TypeComment
