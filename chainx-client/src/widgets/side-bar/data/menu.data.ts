@@ -16,19 +16,19 @@ export const MAIN_MENU: TypeMenuItem[] = [
     icon: LayoutDashboard,
     link: PRIVATE_ROUTES.dashboard(),
     title: 'Dashboard',
-    isAuth: true
+    user: true
   },
   {
     icon: Mail,
-    link: PRIVATE_ROUTES.email(),
+    link: PRIVATE_ROUTES.messagesMy(),
     title: 'Email',
-    isAuth: true
+    user: true
   },
   {
     icon: Sparkle,
     link: PUBLIC_ROUTES.posts(),
     title: 'Posts',
-    isAuth: undefined
+    user: undefined
   }
 ]
 
@@ -37,19 +37,19 @@ export const AUTH_MENU: TypeMenuItem[] = [
     icon: LogIn,
     link: PUBLIC_ROUTES.signIn(),
     title: 'Sign-in',
-    isAuth: false
+    user: false
   },
   {
     icon: KeyRound,
     link: PUBLIC_ROUTES.signUp(),
     title: 'Sign-up',
-    isAuth: false
+    user: false
   },
   {
     icon: LogOut,
     link: PRIVATE_ROUTES.signOut(),
     title: 'Sign-out',
-    isAuth: true
+    user: true
   }
 ]
 
@@ -58,7 +58,7 @@ export const ADDITIONAL_MENU: TypeMenuItem[] = [
     icon: Contact,
     link: PUBLIC_ROUTES.aboutUs(),
     title: 'About-us',
-    isAuth: undefined
+    user: undefined
   }
 ]
 
@@ -67,6 +67,6 @@ export const PANELS_MENU: TypeMenuItem[] = [
     icon: Newspaper,
     link: PRIVATE_ROUTES.postsPanelMy(),
     title: 'Posts-panel',
-    isAuth: true
+    user: true
   }
 ]

@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect, useState } from 'react'
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import {
   EnumUploadImage,
@@ -9,7 +11,7 @@ import { useUpdateUser } from '../../../features/users/hooks/update-user.hook'
 import { TypeUpdateUser } from '@/shared/models/user.type'
 
 export const useUpdateUserPage = () => {
-  const { isAuth, isLoading } = useAuth()
+  const { user, isLoading } = useUser()
   const [imageURL, setImageURL] = useState<string | null>(null)
   const [image, setImage] = useState<File | null>(null)
   const { mutateAsync: mutateUploadAvatar } = useUploadImage({
@@ -25,13 +27,13 @@ export const useUpdateUserPage = () => {
   } = useForm<TypeUpdateUser>({ mode: 'onChange' })
 
   useEffect(() => {
-    if (isAuth) {
-      setImageURL(isAuth?.imageUrl)
-      setValue('firstName', isAuth.firstName)
-      setValue('lastName', isAuth.lastName)
-      setValue('username', isAuth.username)
+    if (user) {
+      setImageURL(user?.imageUrl)
+      setValue('firstName', user.firstName)
+      setValue('lastName', user.lastName)
+      setValue('username', user.username)
     }
-  }, [isAuth])
+  }, [user])
 
   const onSubmit: SubmitHandler<TypeUpdateUser> = async data => {
     try {
@@ -40,7 +42,7 @@ export const useUpdateUserPage = () => {
         const dataUpdateUser = { ...data, imageUrl: response.url }
         mutateUpdateUser(dataUpdateUser)
       } else {
-        const dataUploadUser = { ...data, imageUrl: isAuth!.imageUrl }
+        const dataUploadUser = { ...data, imageUrl: user!.imageUrl }
         mutateUpdateUser(dataUploadUser)
       }
     } catch (error) {

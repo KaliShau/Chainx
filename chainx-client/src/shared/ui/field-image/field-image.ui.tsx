@@ -1,3 +1,5 @@
+'use client'
+
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import styles from './field-image.module.scss'
 import { cn } from '@/shared/utils/classnames.utils'

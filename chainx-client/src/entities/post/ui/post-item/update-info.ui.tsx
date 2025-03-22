@@ -12,14 +12,14 @@ type Type = {
   data: TypePost
   toggleLike: () => void
   isLike: () => boolean | undefined
-  isAuth: TypeUser | undefined
+  user: TypeUser | undefined
 }
 
 export const UpdateInfoPost: FC<Type> = ({
   toggleLike,
   data,
   isLike,
-  isAuth
+  user
 }) => {
   return (
     <div className={styles.update}>
@@ -30,7 +30,7 @@ export const UpdateInfoPost: FC<Type> = ({
         <h4>
           Comments: <p>{data.comments?.length}</p>
         </h4>
-        {isAuth && <CreateCommentForm postId={data.id} />}
+        {user && <CreateCommentForm postId={data.id} />}
         {data.comments?.length != 0 ? (
           data.comments?.map(comment => (
             <CommentItem data={comment} key={comment.id} />

@@ -6,7 +6,7 @@ import { TypePost } from '@/shared/models/post.type'
 import Image from 'next/image'
 import Link from 'next/link'
 import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 import { useToggleLike } from '@/features/likes/hooks/toggle-like.hook'
 import { PostInfo } from './info.ui'
 import { UpdateInfoPost } from './update-info.ui'
@@ -18,19 +18,19 @@ type Type = {
 }
 
 export const PostItem: FC<Type> = ({ data, update = false }) => {
-  const { isAuth } = useAuth()
+  const { user } = useUser()
   const { mutate } = useToggleLike()
 
   const isLike = () => {
-    if (!isAuth) return
+    if (!user) return
 
-    const like = data.likes?.filter(like => like.userId === isAuth.id)
+    const like = data.likes?.filter(like => like.userId === user.id)
 
     return like?.length == 1
   }
 
   const toggleLike = () => {
-    if (isAuth) {
+    if (user) {
       mutate(data.id)
     }
   }
@@ -55,7 +55,7 @@ export const PostItem: FC<Type> = ({ data, update = false }) => {
         <PostInfo data={data} isLike={isLike} />
       ) : (
         <UpdateInfoPost
-          isAuth={isAuth}
+          user={user}
           toggleLike={toggleLike}
           isLike={isLike}
           data={data}

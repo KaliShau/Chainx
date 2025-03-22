@@ -1,11 +1,14 @@
-'use client'
-
-import withAuth from '@/app/providers/with-auth'
 import { CreatePostPage } from '@/pages/create-post-page'
-import { NextPage } from 'next'
+import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
+import { Metadata, NextPage } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Create post',
+  ...NO_INDEX_PAGE
+}
 
 const DashboardPostsCreatePage: NextPage = () => {
   return <CreatePostPage />
 }
 
-export default withAuth(DashboardPostsCreatePage)
+export default DashboardPostsCreatePage

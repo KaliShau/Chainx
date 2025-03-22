@@ -1,6 +1,6 @@
 'use client'
 
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
 import { TypeAuthRequest } from '@/shared/models/auth.type'
 import { redirect } from 'next/navigation'
@@ -14,8 +14,8 @@ import { useSignUp } from '../hooks/sign-up.hook'
 import { Spinner } from '@/shared/ui/spinner/spinner.ui'
 
 export const SignUp: FC = () => {
-  const { isAuth } = useAuth()
-  if (isAuth) {
+  const { user } = useUser()
+  if (user) {
     redirect(PRIVATE_ROUTES.dashboard())
   }
 

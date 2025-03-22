@@ -1,17 +1,14 @@
-'use client'
-
 import { User } from '@/pages/user-page'
 import { Error } from '@/shared/ui/error/error.ui'
-import { NextPage } from 'next'
+import { Metadata, NextPage } from 'next'
 import { useParams } from 'next/navigation'
 
-const UserPage: NextPage = () => {
-  const param = useParams()
-  if (!param) {
-    return <Error />
-  }
+export const metadata: Metadata = {
+  title: 'User'
+}
 
-  return <User id={param.id} />
+const UserPage: NextPage = () => {
+  return <User />
 }
 
 export default UserPage

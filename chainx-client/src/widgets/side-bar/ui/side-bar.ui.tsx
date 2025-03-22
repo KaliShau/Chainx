@@ -16,10 +16,10 @@ import {
   localStorageMainMenu,
   localStoragePanelsMenu
 } from '@/shared/utils/local-storage.utils'
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 
 export const SideBar: FC = () => {
-  const { isAuth } = useAuth()
+  const { user } = useUser()
 
   return (
     <aside className={styles.main}>
@@ -37,7 +37,7 @@ export const SideBar: FC = () => {
         menuData={AUTH_MENU}
         topic='Auth'
       />
-      {isAuth && (
+      {user && (
         <Menu
           localStorageMenu={localStoragePanelsMenu}
           menuData={PANELS_MENU}

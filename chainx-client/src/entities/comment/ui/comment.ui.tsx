@@ -5,7 +5,7 @@ import styles from './comment.module.scss'
 import { CreateCommentForm, useDeleteComment } from '@/features/comments'
 import { Button } from '@/shared/ui/button/button.ui'
 import { Eraser } from 'lucide-react'
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 import { UserCard } from '@/entities/user'
 
 type Type = {
@@ -13,7 +13,7 @@ type Type = {
 }
 
 export const CommentItem: FC<Type> = ({ data }) => {
-  const { isAuth } = useAuth()
+  const { user } = useUser()
   const { mutate } = useDeleteComment()
 
   return (
@@ -21,7 +21,7 @@ export const CommentItem: FC<Type> = ({ data }) => {
       <UserCard data={data.user} createDate={data.createdAt} />
       <div>
         <p>{data.content}</p>
-        {isAuth?.id === data.userId && (
+        {user?.id === data.userId && (
           <Button onClick={() => mutate(data.id)}>
             <Eraser />
           </Button>

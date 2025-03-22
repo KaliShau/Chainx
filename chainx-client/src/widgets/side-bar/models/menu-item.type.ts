@@ -4,5 +4,5 @@ export type TypeMenuItem = {
   icon: LucideIcon
   title: string
   link: string
-  isAuth: boolean | undefined
+  user: boolean | undefined
 }

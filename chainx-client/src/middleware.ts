@@ -4,7 +4,7 @@ import { EnumTokens } from './shared/utils/token.utils'
 
 export function middleware(req: NextRequest) {
   const refreshToken = req.cookies.get(EnumTokens.REFRESH_TOKEN)?.value
-  const isAuth = !!refreshToken
+  const user = !!refreshToken
 
   const privateRoutesValues = Object.values(PRIVATE_ROUTES)
   const currentPath = req.nextUrl.pathname
@@ -13,7 +13,7 @@ export function middleware(req: NextRequest) {
     .map(route => route())
     .filter(route => route !== '')
 
-  if (protectRoutes.includes(currentPath) && !isAuth) {
+  if (protectRoutes.includes(currentPath) && !user) {
     return NextResponse.rewrite(new URL('/404', req.url))
   }
 

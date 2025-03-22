@@ -20,10 +20,14 @@ export const PRIVATE_ROUTES = {
   dashboard: () => PRIVATE_ROUTES.root('/dashboard'),
   updateUser: () => PRIVATE_ROUTES.root('/dashboard/update'),
 
-  email: () => PRIVATE_ROUTES.root('/email'),
-
   signOut: () => PRIVATE_ROUTES.root('/auth/sign-out'),
 
   postsPanelMy: () => PRIVATE_ROUTES.root('/panel/posts'),
-  postsPanelCreate: () => PRIVATE_ROUTES.root('/panel/posts/create')
+  postsPanelCreate: () => PRIVATE_ROUTES.root('/panel/posts/create'),
+
+  messagesMy: () => PRIVATE_ROUTES.root('/messages'),
+  messagesSender: () => PRIVATE_ROUTES.root('/messages/sender'),
+  messagesReceiver: () => PRIVATE_ROUTES.root('/messages/receiver'),
+  messagesById: (id = '') => PRIVATE_ROUTES.root(`/messages/${id}`),
+  messagesCreate: () => PRIVATE_ROUTES.root(`/messages/create`)
 }

@@ -1,16 +1,25 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import styles from './dashboard.module.scss'
-import { useAuth } from '@/features/tokens'
+import { useUser } from '@/features/tokens'
 import { UserItem } from '@/entities/user'
+import { Loader } from '@/shared/ui/loader/loader.ui'
+import { PUBLIC_ROUTES } from '@/shared/config/routes.config'
+import { redirect } from 'next/navigation'
+import { useAuth } from '@/features/tokens/hooks/auth.hook'
 
 export const Dashboard: FC = () => {
-  const { isAuth } = useAuth()
+  const { user } = useUser()
+  const auth = useAuth()
+
+  if (auth) {
+    return auth
+  }
 
   return (
     <div className={styles.root}>
-      {isAuth && <UserItem data={isAuth} profile={true} />}
+      {user && <UserItem data={user} profile={true} />}
     </div>
   )
 }

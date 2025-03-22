@@ -5,6 +5,10 @@
     @apply bg-light-black-2 bg-opacity-30;
   }
 
+  > button {
+    @apply ml-4;
+  }
+
   img {
     @apply w-[150px] h-auto rounded-lg;
   }
@@ -12,7 +16,7 @@
   > a {
     @apply flex w-full gap-8 items-center;
 
-    > div > {
+    > div {
       @apply flex gap-2;
       p {
         @apply flex gap-4 text-gray;

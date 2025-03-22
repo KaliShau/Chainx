@@ -1,3 +1,5 @@
+'use client'
+
 import { usePosts } from '@/features/posts'
 import { useRef } from 'react'
 import styles from './my-posts.module.scss'
@@ -6,6 +8,7 @@ import { Loader } from '@/shared/ui/loader/loader.ui'
 import { PostCard, PostItem } from '@/entities/post'
 import { EnumTypeUsePosts } from '@/features/posts/hooks/posts.hook'
 import { Button } from '@/shared/ui/button/button.ui'
+import { useAuth } from '@/features/tokens/hooks/auth.hook'
 
 export const MyPosts = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
@@ -23,6 +26,12 @@ export const MyPosts = () => {
     infiniteScroll: false,
     limit: 4
   })
+
+  const auth = useAuth()
+
+  if (auth) {
+    return auth
+  }
 
   return (
     <div className={styles.root} ref={scrollContainerRef}>
