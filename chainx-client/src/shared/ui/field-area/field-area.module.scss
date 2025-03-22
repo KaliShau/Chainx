@@ -4,7 +4,7 @@
   }
 
   > textarea {
-    @apply outline-none bg-transparent border-2 rounded-md border-opacity-35 shadow-2xl shadow-black p-2 border-gray w-full mt-2;
+    @apply outline-none bg-transparent border-2 rounded-md border-opacity-35 shadow-2xl shadow-black p-2 border-gray w-full mt-2 overflow-auto;
 
     &:focus {
       @apply border-primary;

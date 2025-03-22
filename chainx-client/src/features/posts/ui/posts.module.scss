@@ -1,6 +1,6 @@
 .root {
   .input {
-    @apply h-[400px] w-auto mx-auto;
+    @apply min-h-[400px] w-auto mx-auto;
   }
 
   > div {

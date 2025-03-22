@@ -6,6 +6,7 @@ export const FieldArea = ({
   topic,
   className: style,
   error,
+
   ...rest
 }: TypeFieldArea) => {
   return (

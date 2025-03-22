@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -47,5 +48,13 @@ export class PostsController {
     @Query('limit') limit: number = 2
   ) {
     return this.postsService.getAll(page, limit)
+  }
+
+  @Auth()
+  @Delete(':id')
+  async delete(@Param('id') postId: string, @User('id') userId: string) {
+    this.postsService.delete(postId, userId)
+
+    return { message: 'Successfully' }
   }
 }

@@ -6,12 +6,20 @@ import { TypeCreatePost } from '@/shared/models/post.type'
 import { Field } from '@/shared/ui/field/field.ui'
 import { Button } from '@/shared/ui/button/button.ui'
 import { FieldArea } from '@/shared/ui/field-area/field-area.ui'
+import { useCreatePost } from '../hooks/create-post.hook'
+import { useUploadImage } from '@/features/images'
+import { EnumUploadImage } from '@/features/images/hooks/upload-image.hook'
+import toast from 'react-hot-toast'
 
 type TypeForm = Omit<TypeCreatePost, 'imageUrl'>
 
 export const CreatePostForm = () => {
   const [imageURL, setImageURL] = useState<string | null>(null)
   const [image, setImage] = useState<File | null>(null)
+  const { mutate: mutateCreatePost } = useCreatePost()
+  const { mutateAsync: mutateUploadPostImage } = useUploadImage({
+    type: EnumUploadImage.POST
+  })
 
   const {
     formState: { errors },
@@ -19,8 +27,18 @@ export const CreatePostForm = () => {
     handleSubmit
   } = useForm<TypeForm>({ mode: 'onChange' })
 
-  const onSubmit: SubmitHandler<TypeForm> = data => {
-    console.log(data)
+  const onSubmit: SubmitHandler<TypeForm> = async data => {
+    try {
+      if (image) {
+        const response = await mutateUploadPostImage(image)
+        const dataCreatePost = { ...data, imageUrl: response.url }
+        mutateCreatePost(dataCreatePost)
+      } else {
+        toast.error('Not found post image!')
+      }
+    } catch (error) {
+      console.error('Error')
+    }
   }
   return (
     <form className={styles.root} onSubmit={handleSubmit(onSubmit)}>

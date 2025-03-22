@@ -8,6 +8,8 @@ export const API_URL = {
   post: (id = '') => API_URL.root(`/posts/${id}`),
   postsByUser: (query: number | unknown = 1, limit: number) =>
     API_URL.root(`/posts/user?page=${query}&limit=${limit}`),
+  deletePost: (id = '') => API_URL.root(`/posts/${id}`),
+  createPost: () => API_URL.root(`/posts`),
 
   getNewTokens: () => API_URL.root('/auth/get-new-tokens'),
 
@@ -21,6 +23,7 @@ export const API_URL = {
   toggleLike: (id = '') => API_URL.root(`/likes/${id}`),
 
   uploadAvatar: () => API_URL.root('/files/avatars/upload'),
+  uploadPostImage: () => API_URL.root('/files/posts/upload'),
 
   createComment: (id = '') => API_URL.root(`/comments/${id}`),
   deleteComment: (id = '') => API_URL.root(`/comments/${id}`)

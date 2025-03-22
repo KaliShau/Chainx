@@ -24,6 +24,6 @@ export const PRIVATE_ROUTES = {
 
   signOut: () => PRIVATE_ROUTES.root('/auth/sign-out'),
 
-  postsDashboardMy: () => PRIVATE_ROUTES.root('/dashboard/posts'),
-  postsDashboardCreate: () => PRIVATE_ROUTES.root('/dashboard/posts/create')
+  postsPanelMy: () => PRIVATE_ROUTES.root('/panel/posts'),
+  postsPanelCreate: () => PRIVATE_ROUTES.root('/panel/posts/create')
 }

@@ -1,0 +1,33 @@
+.root {
+  @apply bg-light-black h-full flex w-full rounded p-4 bg-opacity-95;
+
+  > img {
+    @apply w-[600px] object-cover h-[600px] rounded;
+  }
+
+  > div {
+    @apply p-4 flex flex-col gap-2 w-full;
+
+    h2 {
+      @apply font-semibold text-3xl mb-2;
+    }
+
+    h4 {
+      @apply bg-light-black-2 p-2 bg-opacity-30 rounded font-semibold;
+    }
+  }
+
+  .link {
+    @apply flex w-full;
+
+    > button {
+      @apply w-full;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .root {
+    @apply flex-col;
+  }
+}
