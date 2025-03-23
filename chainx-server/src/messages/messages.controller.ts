@@ -20,13 +20,13 @@ export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
   @UsePipes(new ValidationPipe())
-  @Post(':id')
+  @Post(':username')
   async create(
     @Body() dto: MessagesDto,
     @User('id') senderId: string,
-    @Param('id') receiverId: string
+    @Param('username') usernameReceiver: string
   ) {
-    return this.messagesService.create(senderId, receiverId, dto)
+    return this.messagesService.create(senderId, usernameReceiver, dto)
   }
 
   @Get()
@@ -56,20 +56,9 @@ export class MessagesController {
     return this.messagesService.getByReceiver(page, limit, id)
   }
 
-  @Delete('sender/:id')
-  async deleteBySender(
-    @Param('id') messageId: string,
-    @User('id') senderId: string
-  ) {
-    return this.messagesService.deleteBySender(messageId, senderId)
-  }
-
-  @Delete('receiver/:id')
-  async deleteByReceiver(
-    @Param('id') messageId: string,
-    @User('id') receiverId: string
-  ) {
-    return this.messagesService.deleteByReceiver(messageId, receiverId)
+  @Delete(':id')
+  async delete(@Param('id') messageId: string, @User('id') userId: string) {
+    return this.messagesService.delete(messageId, userId)
   }
 
   @Get(':id')

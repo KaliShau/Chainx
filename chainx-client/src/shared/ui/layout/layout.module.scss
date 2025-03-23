@@ -1,5 +1,5 @@
 .root {
-  @apply bg-light-black rounded h-full bg-opacity-95 p-4 overflow-auto flex flex-col gap-4;
+  @apply rounded h-full  p-4 overflow-auto flex flex-col gap-4  w-full;
 
   > h2 {
     @apply font-semibold text-2xl;
@@ -14,8 +14,4 @@
 }
 .root::-webkit-scrollbar-thumb {
   @apply bg-primary rounded-2xl;
-}
-
-.posts {
-  @apply flex flex-col gap-4;
 }

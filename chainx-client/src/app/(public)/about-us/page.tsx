@@ -1,4 +1,4 @@
-import { AboutUs } from '@/pages/about-us-page'
+import { AboutUs } from '@/pages/additional/about-us-page'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {

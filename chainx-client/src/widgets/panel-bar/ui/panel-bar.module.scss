@@ -13,3 +13,9 @@
 .active {
   @apply bg-primary;
 }
+
+@media screen and (max-width: 800px) {
+  .root {
+    @apply flex gap-6 px-2 flex-wrap;
+  }
+}

@@ -1,0 +1,24 @@
+.createMessage {
+  @apply flex flex-col;
+  > div {
+    @apply flex w-full gap-10;
+
+    > div {
+      @apply w-full;
+    }
+  }
+  textarea {
+    @apply h-[200px];
+  }
+}
+
+.rel {
+  @apply relative;
+
+  > div {
+  }
+}
+
+.abs {
+  @apply absolute w-full bg-light-black shadow-lg p-2;
+}

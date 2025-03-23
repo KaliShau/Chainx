@@ -1,4 +1,4 @@
-import { UpdateUser } from '@/pages/update-user-page'
+import { UpdateUser } from '@/pages/users/update-user-page'
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
 import { Error } from '@/shared/ui/error/error.ui'
 import { Metadata, NextPage } from 'next'

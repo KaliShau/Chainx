@@ -10,8 +10,12 @@ export class MessagesService {
     private userService: UsersService
   ) {}
 
-  async create(senderId: string, receiverId: string, { content }: MessagesDto) {
-    const receiver = await this.userService.getById(receiverId)
+  async create(
+    senderId: string,
+    usernameReceiver: string,
+    { content }: MessagesDto
+  ) {
+    const receiver = await this.userService.getByUsername(usernameReceiver)
 
     if (!receiver) throw new BadRequestException('Receiver not found!')
 
@@ -19,7 +23,7 @@ export class MessagesService {
       data: {
         content,
         senderId,
-        receiverId,
+        receiverId: receiver.id,
       },
     })
   }
@@ -82,27 +86,27 @@ export class MessagesService {
     })
   }
 
-  async deleteBySender(messageId: string, senderId: string) {
-    const message = await this.getById(messageId, senderId)
+  async delete(messageId: string, userId: string) {
+    const message = await this.getById(messageId, userId)
 
-    if (!message || message.senderId != senderId)
-      throw new BadRequestException('Message not found!')
+    if (message || message.senderId == userId) {
+      if (message.deletedBySenderAt != null)
+        throw new BadRequestException('Message not found!')
 
-    return this.prisma.messages.update({
-      where: { id: messageId, senderId },
-      data: { deletedBySenderAt: new Date() },
-    })
-  }
+      return this.prisma.messages.update({
+        where: { id: messageId, senderId: userId },
+        data: { deletedBySenderAt: new Date() },
+      })
+    } else if (message || message.receiverId == userId) {
+      if (message.deletedByReceiverAt != null)
+        throw new BadRequestException('Message not found!')
 
-  async deleteByReceiver(messageId: string, receiverId: string) {
-    const message = await this.getById(messageId, receiverId)
+      return this.prisma.messages.update({
+        where: { id: messageId, receiverId: userId },
+        data: { deletedByReceiverAt: new Date() },
+      })
+    }
 
-    if (!message || message.receiverId != receiverId)
-      throw new BadRequestException('Message not found!')
-
-    return this.prisma.messages.update({
-      where: { id: messageId, receiverId },
-      data: { deletedByReceiverAt: new Date() },
-    })
+    throw new BadRequestException('Message not found!')
   }
 }

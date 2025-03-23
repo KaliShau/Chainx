@@ -4,8 +4,6 @@ import { PostsService } from '../services/posts.service'
 import toast from 'react-hot-toast'
 
 export const useCreatePost = () => {
-  const queryClient = useQueryClient()
-
   const { mutate } = useMutation({
     mutationFn: (data: TypeCreatePost) => PostsService.create(data),
     onError: err => {
@@ -13,10 +11,6 @@ export const useCreatePost = () => {
     },
     onSuccess: () => {
       toast.success('Success create posts!')
-
-      // queryClient.invalidateQueries({
-      //   queryKey: ['post']
-      // })
     }
   })
 

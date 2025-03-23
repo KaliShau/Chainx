@@ -1,0 +1,31 @@
+.root {
+  @apply rounded-lg border overflow-x-auto;
+
+  td,
+  th {
+    @apply border-2 border-gray p-2 border-opacity-20 min-w-[200px] max-w-[600px] overflow-x-hidden;
+  }
+
+  tr {
+    &:hover {
+      @apply bg-light-black-2 bg-opacity-20;
+    }
+  }
+
+  button {
+    @apply w-full;
+  }
+
+  a {
+    @apply w-full flex text-wrap;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .root {
+    td,
+    th {
+      @apply min-w-[100px] max-w-[200px];
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { CreatePostPage } from '@/pages/create-post-page'
+import { CreatePostPage } from '@/pages/posts/create-post-page'
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
 import { Metadata, NextPage } from 'next'
 

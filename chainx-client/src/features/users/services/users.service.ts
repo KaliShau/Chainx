@@ -7,5 +7,8 @@ export const UsersService = {
     (await axiosClassic.get(API_URL.userById(id))).data,
 
   update: async (data: TypeUpdateUser & Pick<TypeUser, 'imageUrl'>) =>
-    (await axiosWithAuth.patch(API_URL.updateUser(), data)).data
+    (await axiosWithAuth.patch(API_URL.updateUser(), data)).data,
+
+  searchByUsername: async (username: string): Promise<TypeUser[]> =>
+    (await axiosClassic(API_URL.searchByUsername(username))).data
 }

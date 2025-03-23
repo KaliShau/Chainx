@@ -1,8 +1,8 @@
 'use client'
 
 import { useAuth } from '@/features/tokens/hooks/auth.hook'
-import styles from './create-post.module.scss'
 import { CreatePostForm } from '@/features/posts/ui/create-post-form.ui'
+import { Layout } from '@/shared/ui/layout/layout.ui'
 
 export const CreatePostPage = () => {
   const auth = useAuth()
@@ -12,9 +12,9 @@ export const CreatePostPage = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <Layout>
       <h2>Create post</h2>
       <CreatePostForm />
-    </div>
+    </Layout>
   )
 }

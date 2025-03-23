@@ -27,6 +27,18 @@ export class UsersService {
     })
   }
 
+  async searchByUsername(username: string) {
+    return this.prisma.users.findMany({
+      where: {
+        username: {
+          contains: username,
+          mode: 'insensitive',
+        },
+      },
+      take: 4,
+    })
+  }
+
   async update(dto: UserDto, userId: string) {
     const user = await this.getById(userId)
 

@@ -7,8 +7,8 @@ import {
   EnumUploadImage,
   useUploadImage
 } from '@/features/images/hooks/upload-image.hook'
-import { useUpdateUser } from '../../../features/users/hooks/update-user.hook'
 import { TypeUpdateUser } from '@/shared/models/user.type'
+import { useUpdateUser } from '@/features/users'
 
 export const useUpdateUserPage = () => {
   const { user, isLoading } = useUser()

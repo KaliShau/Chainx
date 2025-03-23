@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Patch,
+  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common'
@@ -15,6 +16,11 @@ import { UserDto } from './user.dto'
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
+  @Get('search')
+  async searchByUsername(@Query('username') username: string) {
+    return this.usersService.searchByUsername(username)
+  }
 
   @Get(':id')
   async getById(@Param('id') id: string) {

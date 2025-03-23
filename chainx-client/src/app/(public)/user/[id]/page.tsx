@@ -1,4 +1,4 @@
-import { User } from '@/pages/user-page'
+import { User } from '@/pages/users/user-page'
 import { Error } from '@/shared/ui/error/error.ui'
 import { Metadata, NextPage } from 'next'
 import { useParams } from 'next/navigation'

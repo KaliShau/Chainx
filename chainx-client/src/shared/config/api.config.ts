@@ -3,11 +3,11 @@ export const SERVER_URL = process.env.SERVER_URL as string
 export const API_URL = {
   root: (url = '') => `${url ? url : ''}`,
 
-  posts: (query: number | unknown = 1, limit: number) =>
-    API_URL.root(`/posts?page=${query}&limit=${limit}`),
+  posts: (page: number | unknown = 1, limit: number) =>
+    API_URL.root(`/posts?page=${page}&limit=${limit}`),
   post: (id = '') => API_URL.root(`/posts/${id}`),
-  postsByUser: (query: number | unknown = 1, limit: number) =>
-    API_URL.root(`/posts/user?page=${query}&limit=${limit}`),
+  postsByUser: (page: number | unknown = 1, limit: number) =>
+    API_URL.root(`/posts/user?page=${page}&limit=${limit}`),
   deletePost: (id = '') => API_URL.root(`/posts/${id}`),
   createPost: () => API_URL.root(`/posts`),
 
@@ -19,6 +19,8 @@ export const API_URL = {
 
   userById: (id = '') => API_URL.root(`/users/${id}`),
   updateUser: () => API_URL.root('/users'),
+  searchByUsername: (username: string = '') =>
+    API_URL.root(`/users/search?username=${username}`),
 
   toggleLike: (id = '') => API_URL.root(`/likes/${id}`),
 
@@ -28,11 +30,13 @@ export const API_URL = {
   createComment: (id = '') => API_URL.root(`/comments/${id}`),
   deleteComment: (id = '') => API_URL.root(`/comments/${id}`),
 
-  messagesMy: () => API_URL.root('/messages'),
-  messagesSender: () => API_URL.root('/messages/sender'),
-  messagesReceiver: () => API_URL.root('/messages/receiver'),
+  messagesMy: (page: number | unknown = 1, limit: number) =>
+    API_URL.root(`/messages?page=${page}&limit=${limit}`),
+  messagesSender: (page: number | unknown = 1, limit: number) =>
+    API_URL.root(`/messages/sender?page=${page}&limit=${limit}`),
+  messagesReceiver: (page: number | unknown = 1, limit: number) =>
+    API_URL.root(`/messages/receiver?page=${page}&limit=${limit}`),
   messagesById: (id = '') => API_URL.root(`/messages/${id}`),
   messagesCreate: (id = '') => API_URL.root(`/messages/${id}`),
-  messagesDeleteReceiver: (id = '') => API_URL.root(`/messages/receiver/${id}`),
-  messagesDeleteSender: (id = '') => API_URL.root(`/messages/sender/${id}`)
+  messagesDelete: (id = '') => API_URL.root(`/messages/${id}`)
 }

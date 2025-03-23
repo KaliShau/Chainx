@@ -1,7 +1,7 @@
 'use client'
 
 import { usePosts } from '@/features/posts'
-import { useRef } from 'react'
+import { RefObject, useRef } from 'react'
 import styles from './my-posts.module.scss'
 import { Error } from '@/shared/ui/error/error.ui'
 import { Loader } from '@/shared/ui/loader/loader.ui'
@@ -9,6 +9,7 @@ import { PostCard, PostItem } from '@/entities/post'
 import { EnumTypeUsePosts } from '@/features/posts/hooks/posts.hook'
 import { Button } from '@/shared/ui/button/button.ui'
 import { useAuth } from '@/features/tokens/hooks/auth.hook'
+import { Layout } from '@/shared/ui/layout/layout.ui'
 
 export const MyPosts = () => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null)
@@ -34,7 +35,7 @@ export const MyPosts = () => {
   }
 
   return (
-    <div className={styles.root} ref={scrollContainerRef}>
+    <Layout className={styles.root} ref={scrollContainerRef}>
       <h2>My posts</h2>
       {isLoading && <Loader />}
 
@@ -49,6 +50,6 @@ export const MyPosts = () => {
       ))}
       {isFetchingNextPage && <Loader />}
       {hasNextPage && <Button onClick={() => fetchNextPage()}>Next</Button>}
-    </div>
+    </Layout>
   )
 }

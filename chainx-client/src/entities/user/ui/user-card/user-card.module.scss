@@ -14,10 +14,18 @@
   }
 
   h4 {
-    @apply font-semibold text-xl flex flex-col;
+    @apply font-semibold text-xl flex flex-col text-start;
 
     > span {
       @apply font-medium text-base;
     }
+  }
+}
+
+.search {
+  @apply bg-light-black-2 bg-opacity-20 my-2 left-0 w-full;
+
+  &:hover {
+    @apply bg-opacity-50;
   }
 }
