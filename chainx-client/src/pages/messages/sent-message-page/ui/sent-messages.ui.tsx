@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './my-messages.module.scss'
+import styles from './sent-messages.module.scss'
 import { Layout } from '@/shared/ui/layout/layout.ui'
 import { useAuth } from '@/features/tokens/hooks/auth.hook'
 import { Loader } from '@/shared/ui/loader/loader.ui'
@@ -9,7 +9,7 @@ import { Button } from '@/shared/ui/button/button.ui'
 import { Table } from '@/widgets/table'
 import { TypeTableHead, TypeTableRow } from '@/widgets/table/models/table.type'
 import { dateFormat } from '@/shared/utils/date-format.utils'
-import { useMyMessages } from '@/features/messages/hooks/my-message.hook'
+import { useSentMessages } from '@/features/messages'
 
 const Head: TypeTableHead[] = [
   { title: 'Created at' },
@@ -19,7 +19,7 @@ const Head: TypeTableHead[] = [
   { title: 'Action' }
 ]
 
-export const MyMessages = () => {
+export const SentMessages = () => {
   const {
     data,
     isError,
@@ -28,7 +28,7 @@ export const MyMessages = () => {
     refetch,
     fetchNextPage,
     hasNextPage
-  } = useMyMessages()
+  } = useSentMessages()
 
   const auth = useAuth()
 
@@ -65,7 +65,7 @@ export const MyMessages = () => {
 
   return (
     <Layout className={styles.root}>
-      <h2>My messages</h2>
+      <h2>Sent messages</h2>
       {isLoading && <Loader />}
 
       {isError && <Error refetch={refetch} />}

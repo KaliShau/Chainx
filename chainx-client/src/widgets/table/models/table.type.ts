@@ -14,7 +14,5 @@ export type TypeTableRow<Head extends TypeTableHead[]> = {
 export type TypeTableItem = {
   title?: string
   link?: string
-  actionTitle?: string
-  action?: () => void
   id: string
 }

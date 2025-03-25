@@ -1,8 +1,6 @@
 'use client'
 
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { RefObject, useEffect, useState } from 'react'
-import { TypePost } from '@/shared/models/post.type'
 import { MessagesService } from '../services/messages.service'
 import { TypeMessage } from '@/shared/models/message.type'
 

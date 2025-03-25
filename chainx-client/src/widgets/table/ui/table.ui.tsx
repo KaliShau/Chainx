@@ -3,8 +3,11 @@ import { TypeTable } from '../models/table.type'
 import Link from 'next/link'
 import { Button } from '@/shared/ui/button/button.ui'
 import styles from './table.module.scss'
+import { useDeleteMessage } from '@/features/messages/hooks/delete-message.hook'
 
 export const Table: FC<TypeTable> = ({ head, rows }) => {
+  const { mutate } = useDeleteMessage()
+
   return (
     <table className={styles.root}>
       <thead>
@@ -22,7 +25,7 @@ export const Table: FC<TypeTable> = ({ head, rows }) => {
                 {item.link ? (
                   <Link href={item.link}>{item.title}</Link>
                 ) : (
-                  <Button onClick={item.action}>{item.actionTitle}</Button>
+                  <Button onClick={() => mutate(item.id)}>Delete</Button>
                 )}
               </td>
             ))}

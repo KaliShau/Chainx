@@ -52,6 +52,7 @@ export class MessagesService {
       where: {
         OR: [{ receiverId: id }, { senderId: id }],
         deletedBySenderAt: null,
+        deletedByReceiverAt: null,
       },
     })
   }
@@ -89,7 +90,11 @@ export class MessagesService {
   async delete(messageId: string, userId: string) {
     const message = await this.getById(messageId, userId)
 
-    if (message || message.senderId == userId) {
+    if (!message) {
+      throw new BadRequestException('Message not found!')
+    }
+
+    if (message.senderId == userId) {
       if (message.deletedBySenderAt != null)
         throw new BadRequestException('Message not found!')
 
@@ -97,7 +102,8 @@ export class MessagesService {
         where: { id: messageId, senderId: userId },
         data: { deletedBySenderAt: new Date() },
       })
-    } else if (message || message.receiverId == userId) {
+    }
+    if (message.receiverId == userId) {
       if (message.deletedByReceiverAt != null)
         throw new BadRequestException('Message not found!')
 
