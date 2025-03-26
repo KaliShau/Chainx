@@ -1,4 +1,4 @@
-import { MyPosts } from '@/pages/posts/my-posts-page'
+import { MyPosts } from '@/pages-fsd/posts/my-posts-page'
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
 import { Metadata, NextPage } from 'next'
 

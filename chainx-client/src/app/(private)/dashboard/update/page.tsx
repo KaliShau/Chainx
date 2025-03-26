@@ -1,8 +1,6 @@
-import { UpdateUser } from '@/pages/users/update-user-page'
+import { UpdateUser } from '@/pages-fsd/users/update-user-page'
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
-import { Error } from '@/shared/ui/error/error.ui'
 import { Metadata, NextPage } from 'next'
-import { useParams } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'Update',

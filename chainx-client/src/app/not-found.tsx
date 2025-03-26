@@ -1,6 +1,6 @@
 'use client'
 
-import { Metadata, NextPage } from 'next'
+import { NextPage } from 'next'
 import './styles/globals.scss'
 import { Button } from '@/shared/ui/button/button.ui'
 import { redirect } from 'next/navigation'

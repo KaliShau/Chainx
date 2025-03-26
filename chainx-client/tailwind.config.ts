@@ -6,8 +6,8 @@ export default {
   theme: {
     colors: {
       ...COLOR,
-      transparent: 'transparent',
-    },
+      transparent: 'transparent'
+    }
   },
-  plugins: [],
+  plugins: []
 } satisfies Config

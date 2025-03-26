@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './sent-messages.module.scss'
+import styles from './received-messages.module.scss'
 import { Layout } from '@/shared/ui/layout/layout.ui'
 import { useAuth } from '@/features/tokens/hooks/auth.hook'
 import { Loader } from '@/shared/ui/loader/loader.ui'
@@ -9,7 +9,8 @@ import { Button } from '@/shared/ui/button/button.ui'
 import { Table } from '@/widgets/table'
 import { TypeTableHead, TypeTableRow } from '@/widgets/table/models/table.type'
 import { dateFormat } from '@/shared/utils/date-format.utils'
-import { useSentMessages } from '@/features/messages'
+import { useReceivedMessages } from '@/features/messages'
+import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/shared/config/routes.config'
 
 const Head: TypeTableHead[] = [
   { title: 'Created at' },
@@ -19,7 +20,7 @@ const Head: TypeTableHead[] = [
   { title: 'Action' }
 ]
 
-export const SentMessages = () => {
+export const ReceivedMessages = () => {
   const {
     data,
     isError,
@@ -28,7 +29,7 @@ export const SentMessages = () => {
     refetch,
     fetchNextPage,
     hasNextPage
-  } = useSentMessages()
+  } = useReceivedMessages()
 
   const auth = useAuth()
 
@@ -42,21 +43,25 @@ export const SentMessages = () => {
         row: [
           {
             title: dateFormat(message.createdAt),
-            link: message.id,
+            link: PRIVATE_ROUTES.messagesById(message.id),
             id: message.id
           },
           {
             title: message.sender.username,
-            link: message.senderId,
+            link: PUBLIC_ROUTES.user(message.senderId),
             id: message.id
           },
-          { title: message.content, link: message.id, id: message.id },
+          {
+            title: message.content,
+            link: PRIVATE_ROUTES.messagesById(message.id),
+            id: message.id
+          },
           {
             title: message.receiver.username,
-            id: message.id,
-            link: message.id
+            link: PUBLIC_ROUTES.user(message.receiverId),
+            id: message.id
           },
-          { actionTitle: 'Delete', id: message.id }
+          { id: message.id }
         ]
       }))
     ) || []
@@ -65,7 +70,7 @@ export const SentMessages = () => {
 
   return (
     <Layout className={styles.root}>
-      <h2>Sent messages</h2>
+      <h2>Received messages</h2>
       {isLoading && <Loader />}
 
       {isError && <Error refetch={refetch} />}

@@ -30,8 +30,6 @@ export const API_URL = {
   createComment: (id = '') => API_URL.root(`/comments/${id}`),
   deleteComment: (id = '') => API_URL.root(`/comments/${id}`),
 
-  messagesMy: (page: number | unknown = 1, limit: number) =>
-    API_URL.root(`/messages?page=${page}&limit=${limit}`),
   messagesSender: (page: number | unknown = 1, limit: number) =>
     API_URL.root(`/messages/sender?page=${page}&limit=${limit}`),
   messagesReceiver: (page: number | unknown = 1, limit: number) =>

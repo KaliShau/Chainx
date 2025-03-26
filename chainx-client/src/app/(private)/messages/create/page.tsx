@@ -1,4 +1,4 @@
-import { CreateMessage } from '@/pages/messages/create-message-page'
+import { CreateMessage } from '@/pages-fsd/messages/create-message-page'
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
 import { Metadata, NextPage } from 'next'
 

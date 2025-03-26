@@ -1,4 +1,4 @@
-import { Dashboard } from '@/pages/users/dashboard-page'
+import { Dashboard } from '@/pages-fsd/users/dashboard-page'
 import { Metadata, NextPage } from 'next'
 import { NO_INDEX_PAGE } from '@/shared/constants/seo.constant'
 

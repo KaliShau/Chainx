@@ -7,7 +7,7 @@ export const useDeletePost = () => {
 
   const { mutateAsync } = useMutation({
     mutationFn: (id: string) => PostsService.delete(id),
-    onError: err => {
+    onError: () => {
       toast.error('Error delete post!')
     },
     onSuccess: () => {

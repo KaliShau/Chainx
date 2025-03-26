@@ -29,15 +29,6 @@ export class MessagesController {
     return this.messagesService.create(senderId, usernameReceiver, dto)
   }
 
-  @Get()
-  async getMy(
-    @Query('page') page: number = 1,
-    @Query('limit') limit: number = 6,
-    @User('id') id: string
-  ) {
-    return this.messagesService.getMy(page, limit, id)
-  }
-
   @Get('sender')
   async getBySender(
     @Query('page') page: number = 1,

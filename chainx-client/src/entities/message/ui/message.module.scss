@@ -1,0 +1,22 @@
+.root {
+  @apply flex flex-col w-full;
+  > h4 {
+    word-break: break-all;
+  }
+
+  > p {
+    @apply bg-gray bg-opacity-20 p-2 rounded-lg;
+  }
+
+  > div {
+    @apply bg-gray bg-opacity-20 my-2 p-2 rounded-lg flex flex-col gap-2;
+  }
+
+  > h3 {
+    @apply font-semibold text-2xl;
+  }
+
+  > h4 {
+    @apply p-2;
+  }
+}

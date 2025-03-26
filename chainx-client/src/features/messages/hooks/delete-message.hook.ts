@@ -1,4 +1,3 @@
-import { TypeCreateMessage } from '@/shared/models/message.type'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { MessagesService } from '../services/messages.service'
 import toast from 'react-hot-toast'

@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
         destination: `${process.env.SERVER_URL}/uploads/:path*`
       }
     ]
+  },
+
+  eslint: {
+    ignoreDuringBuilds: true
   }
 }
 

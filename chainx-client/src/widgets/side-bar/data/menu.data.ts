@@ -20,7 +20,7 @@ export const MAIN_MENU: TypeMenuItem[] = [
   },
   {
     icon: Mail,
-    link: PRIVATE_ROUTES.messagesMy(),
+    link: PRIVATE_ROUTES.messagesSender(),
     title: 'Email',
     user: true
   },

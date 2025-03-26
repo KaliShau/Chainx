@@ -9,11 +9,6 @@ import { PRIVATE_ROUTES } from '@/shared/config/routes.config'
 
 export const MESSAGES_BAR_DATA: TypePanelBar[] = [
   {
-    icon: MessagesSquare,
-    link: PRIVATE_ROUTES.messagesMy(),
-    title: 'Messages'
-  },
-  {
     icon: MessageSquareShare,
     link: PRIVATE_ROUTES.messagesSender(),
     title: 'Sent messages'

@@ -1,4 +1,4 @@
-import { SignIn } from '@/pages/auth/sign-in-page'
+import { SignIn } from '@/pages-fsd/auth/sign-in-page'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {

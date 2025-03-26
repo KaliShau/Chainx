@@ -1,7 +1,6 @@
 'use client'
 
-import { useAuth } from '@/features/tokens/hooks/auth.hook'
-import { SignOut } from '@/pages/auth/sign-out-page'
+import { SignOut } from '@/pages-fsd/auth/sign-out-page'
 import { NextPage } from 'next'
 
 const SignOutPage: NextPage = () => {

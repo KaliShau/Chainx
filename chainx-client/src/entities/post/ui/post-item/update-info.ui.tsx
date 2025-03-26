@@ -4,7 +4,6 @@ import { Heart } from 'lucide-react'
 import { TypePost } from '@/shared/models/post.type'
 import { CommentItem } from '@/entities/comment'
 import { CreateCommentForm } from '@/features/comments'
-import { TypeAuthResponse } from '@/shared/models/auth.type'
 import { TypeUser } from '@/shared/models/user.type'
 import { cn } from '@/shared/utils/classnames.utils'
 

@@ -3,12 +3,6 @@ import { API_URL } from '@/shared/config/api.config'
 import { TypeCreateMessage, TypeMessage } from '@/shared/models/message.type'
 
 export const MessagesService = {
-  getMy: async (
-    pageParam: number | unknown,
-    limit: number
-  ): Promise<TypeMessage[]> =>
-    (await axiosWithAuth.get(API_URL.messagesMy(pageParam, limit))).data,
-
   getSender: async (
     pageParam: number | unknown,
     limit: number

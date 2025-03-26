@@ -1,7 +1,5 @@
-import { User } from '@/pages/users/user-page'
-import { Error } from '@/shared/ui/error/error.ui'
+import { User } from '@/pages-fsd/users/user-page'
 import { Metadata, NextPage } from 'next'
-import { useParams } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'User'

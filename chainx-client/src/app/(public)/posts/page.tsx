@@ -1,4 +1,4 @@
-import { Posts } from '@/pages/posts/posts-page'
+import { Posts } from '@/pages-fsd/posts/posts-page'
 import { Metadata, NextPage } from 'next'
 
 export const metadata: Metadata = {

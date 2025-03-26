@@ -41,22 +41,6 @@ export class MessagesService {
     })
   }
 
-  async getMy(page: number, limit: number, id: string) {
-    const skip = (page - 1) * limit
-
-    return this.prisma.messages.findMany({
-      skip: skip,
-      take: Number(limit),
-      orderBy: { createdAt: 'desc' },
-      include: { receiver: true, sender: true },
-      where: {
-        OR: [{ receiverId: id }, { senderId: id }],
-        deletedBySenderAt: null,
-        deletedByReceiverAt: null,
-      },
-    })
-  }
-
   async getBySender(page: number, limit: number, userId: string) {
     const skip = (page - 1) * limit
 
@@ -83,6 +67,7 @@ export class MessagesService {
       where: {
         receiverId: userId,
         deletedByReceiverAt: null,
+        deletedBySenderAt: null,
       },
     })
   }

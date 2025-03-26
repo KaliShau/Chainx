@@ -7,7 +7,7 @@ export const useToggleLike = () => {
 
   const { mutate } = useMutation({
     mutationFn: (id: string) => ToggleLikeService.toggleLike(id),
-    onSuccess: data => {
+    onSuccess: () => {
       toast.success('Update Like!!!')
 
       queryClient.invalidateQueries({

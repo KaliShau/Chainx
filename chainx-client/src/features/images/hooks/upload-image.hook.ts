@@ -21,7 +21,7 @@ export const useUploadImage = ({ type }: Type) => {
           return ImagesService.uploadPostImage(file)
       }
     },
-    onError: err => {
+    onError: () => {
       toast.error('Error uploads!!!')
     }
   })

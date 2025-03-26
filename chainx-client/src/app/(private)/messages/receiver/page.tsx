@@ -1,4 +1,4 @@
-import { ReceivedMessages } from '@/pages/messages/received-messages-page'
+import { ReceivedMessages } from '@/pages-fsd/messages/received-messages-page'
 import { NextPage } from 'next'
 
 const ReceiverMassagesPage: NextPage = () => {

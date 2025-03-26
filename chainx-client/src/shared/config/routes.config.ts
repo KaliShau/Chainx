@@ -25,7 +25,6 @@ export const PRIVATE_ROUTES = {
   postsPanelMy: () => PRIVATE_ROUTES.root('/panel/posts'),
   postsPanelCreate: () => PRIVATE_ROUTES.root('/panel/posts/create'),
 
-  messagesMy: () => PRIVATE_ROUTES.root('/messages'),
   messagesSender: () => PRIVATE_ROUTES.root('/messages/sender'),
   messagesReceiver: () => PRIVATE_ROUTES.root('/messages/receiver'),
   messagesById: (id = '') => PRIVATE_ROUTES.root(`/messages/${id}`),
